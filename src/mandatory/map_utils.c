@@ -1,25 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   map_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amanilac <amanilac@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: amanilac <amanilac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/08 11:36:47 by amanilac          #+#    #+#             */
-/*   Updated: 2024/05/10 11:36:34 by amanilac         ###   ########.fr       */
+/*   Created: 2024/06/25 21:24:52 by amanilac          #+#    #+#             */
+/*   Updated: 2024/06/26 16:18:33 by amanilac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
+#include "../inc/so_long.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char *boner_joiner(char *s1, char *s2)
 {
-	char	*final;
-	size_t	i;
-	size_t	j;
+	char *final;
+	size_t i;
+	size_t j;
 
-	if (!s1 || !s2)
+	if (!s1)
 		return (NULL);
+	if (!s2)
+		return (ft_strdup(s1));
 	final = ft_calloc(ft_strlen(s1) + ft_strlen(s2) + 1, sizeof(char));
 	if (final == 0)
 		return (NULL);
@@ -38,5 +40,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 			j++;
 		}
 	}
+	if (s2)
+		free(s2);
 	return (final);
 }
