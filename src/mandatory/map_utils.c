@@ -3,25 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   map_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amanilac <amanilac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: annamanilaci <annamanilaci@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 21:24:52 by amanilac          #+#    #+#             */
-/*   Updated: 2024/06/26 16:18:33 by amanilac         ###   ########.fr       */
+/*   Updated: 2024/06/26 23:45:33 by annamanilac      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 
-char *boner_joiner(char *s1, char *s2)
+char *boner_grower(char *s1, char *s2)
 {
 	char *final;
 	size_t i;
 	size_t j;
 
-	if (!s1)
-		return (NULL);
 	if (!s2)
-		return (ft_strdup(s1));
+		return (NULL);
 	final = ft_calloc(ft_strlen(s1) + ft_strlen(s2) + 1, sizeof(char));
 	if (final == 0)
 		return (NULL);
@@ -40,7 +38,7 @@ char *boner_joiner(char *s1, char *s2)
 			j++;
 		}
 	}
-	if (s2)
-		free(s2);
+	if (s1)
+		free (s1);
 	return (final);
 }
