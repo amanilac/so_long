@@ -3,17 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: annamanilaci <annamanilaci@student.42.f    +#+  +:+       +#+        */
+/*   By: amanilac <amanilac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 18:16:19 by amanilac          #+#    #+#             */
-/*   Updated: 2024/06/26 23:46:16 by annamanilac      ###   ########.fr       */
+/*   Updated: 2024/06/27 18:44:47 by amanilac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 
-void	print_array(char **arr)
+void	print_array(char **map)
 {
+	char	**arr;
+
+	arr = map;
 	while(*arr)
 	{
 		ft_printf("%s\n", *arr);
@@ -24,16 +27,22 @@ void	print_array(char **arr)
 static void	is_rectangle(char **map)
 {
 	int 	width;
-	char	**temp;
+	int		i;
 
-	temp = map;
-	width = ft_strlen(*temp);
-	temp++;
-	while (temp)
+	i = 0;
+	width = (int)ft_strlen(map[i]);
+	while (map[i])
 	{
-		if ((int)ft_strlen(*temp) != width)
-			print_error("uh-oh! that's not a rectangle!");
-		temp++;
+		// ft_printf("%s\n", map[i]);
+		// ft_printf("%d, %d, %d\n", (int)ft_strlen(map[i]), width, (int)ft_strlen(map[i]) == width);
+		if ((int)ft_strlen(map[i]) != width)
+		{
+			write(1, "poopee", 6);
+			exit(EXIT_FAILURE);
+			// ft_printf("%d, %d\n", width, (int)ft_strlen(map[i]));
+			// print_error("fuck");
+		}
+		i++;
 	}
 }
 
@@ -42,33 +51,32 @@ static void	map_checker(char **map)
 	size_t	collectible;
 	size_t	start;
 	size_t	exit;
-	char	**temp;
+	int 	i;
+	int		j;
 
-	temp = map;
 	collectible = 0;
 	start = 0;
 	exit = 0;
-	print_array(map);
-	while (*temp)
+	i = 0;
+	while (map[i])
 	{
-		while (**temp)
+		j = 0;
+		while (map[i][j])
 		{
-			ft_printf("%c\n", **temp);
-			if (**temp == 'C')
+			if (map[i][j] == 'C')
 				collectible++;
-			else if (**temp == 'E')
+			else if (map[i][j] == 'E')
 				exit++;
-			else if (**temp == 'P')
+			else if (map[i][j] == 'P')
 				start++;
-			else if (**temp != '0' && **temp != '1')
-					print_error("whoopsie, that's not a valid temp!\n");
-			(*temp)++;
+			else if (map[i][j] != '0' && map[i][j] != '1')
+					print_error("whoopsie, that's not a valid map!\n");
+			j++;
 		}
-		temp++;
+		i++;
 	}
-	if (collectible != 1 || start != 1 || exit != 1)
+	if (collectible < 1 || start != 1 || exit != 1)
 		print_error("a valid map must contain 1 exit, 1 starting position and at least 1 collectible 🤓\n");
-	is_rectangle(map);
 }
 
 int	main(int argc, char **argv)
@@ -98,6 +106,7 @@ int	main(int argc, char **argv)
 	map = ft_split(boner, '\n');
 	free (boner);
 	map_checker(map);
+	is_rectangle(map);
 	print_array(map);
 	abandon(map);
 	return(EXIT_SUCCESS);
