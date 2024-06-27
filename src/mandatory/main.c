@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amanilac <amanilac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: annamanilaci <annamanilaci@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 18:16:19 by amanilac          #+#    #+#             */
-/*   Updated: 2024/06/27 18:44:47 by amanilac         ###   ########.fr       */
+/*   Updated: 2024/06/27 18:52:33 by annamanilac      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,15 +33,8 @@ static void	is_rectangle(char **map)
 	width = (int)ft_strlen(map[i]);
 	while (map[i])
 	{
-		// ft_printf("%s\n", map[i]);
-		// ft_printf("%d, %d, %d\n", (int)ft_strlen(map[i]), width, (int)ft_strlen(map[i]) == width);
 		if ((int)ft_strlen(map[i]) != width)
-		{
-			write(1, "poopee", 6);
-			exit(EXIT_FAILURE);
-			// ft_printf("%d, %d\n", width, (int)ft_strlen(map[i]));
-			// print_error("fuck");
-		}
+			print_error("uh-oh! that's not a rectangle!\n");
 		i++;
 	}
 }
