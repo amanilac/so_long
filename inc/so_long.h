@@ -6,7 +6,7 @@
 /*   By: amanilac <amanilac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 18:31:29 by amanilac          #+#    #+#             */
-/*   Updated: 2024/07/01 17:43:38 by amanilac         ###   ########.fr       */
+/*   Updated: 2024/07/01 19:52:11 by amanilac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,17 @@
 
 typedef	struct s_long
 {
+	mlx_t	*window;
 	char	**map;
 	int		player_x;
 	int		player_y;
+	int		x_pos;
+	int		y_pos;
 	int		collectible;
 	int		width;
 	int		height;
 	int		moves;
+	int		block_size;
 }	t_long;	
 
 void	print_error(char *str);

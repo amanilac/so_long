@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: annamanilaci <annamanilaci@student.42.f    +#+  +:+       +#+        */
+/*   By: amanilac <amanilac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 21:24:52 by amanilac          #+#    #+#             */
-/*   Updated: 2024/07/01 16:50:37 by annamanilac      ###   ########.fr       */
+/*   Updated: 2024/07/01 19:18:38 by amanilac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	is_rectangle(t_long *game_data)
 
 	i = 0;
 	width = (int)ft_strlen(game_data->map[i]);
+	game_data->width = width;
 	while (game_data->map[i])
 	{
 		if ((int)ft_strlen(game_data->map[i]) != width)

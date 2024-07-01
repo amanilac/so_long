@@ -6,7 +6,7 @@
 /*   By: amanilac <amanilac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 18:16:19 by amanilac          #+#    #+#             */
-/*   Updated: 2024/07/01 17:41:37 by amanilac         ###   ########.fr       */
+/*   Updated: 2024/07/01 19:19:50 by amanilac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,12 +80,14 @@ static void	parse_map(char *file, t_long *game_data)
 
 	fd = open(file, O_RDONLY);
 	line = get_next_line(fd);
+	game_data->height = 0;
 	boner = NULL;
 	while (line)
 	{
 		boner = boner_grower(boner, line);
 		free(line);
 		line = get_next_line(fd);
+		game_data->height++;
 	}
 	game_data->map = ft_split(boner, '\n');
 	free(boner);
@@ -108,5 +110,6 @@ int	main(int argc, char **argv)
 	parse_map(file, &game_data);
 	open_window(&game_data);
 	abandon(game_data.map);
+	ft_printf("map height: %d, map width: %d\n", game_data.height, game_data.width);
 	return(EXIT_SUCCESS);
 }

@@ -3,21 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   map_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: annamanilaci <annamanilaci@student.42.f    +#+  +:+       +#+        */
+/*   By: amanilac <amanilac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 11:59:52 by annamanilac       #+#    #+#             */
-/*   Updated: 2024/07/01 16:51:00 by annamanilac      ###   ########.fr       */
+/*   Updated: 2024/07/01 20:07:54 by amanilac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 
-int	map_height(char **map)
+void	player_cords(t_long	*game_utils)
 {
-	int height;
-
-	height = 0;
-	while (map[height])
-		height++;
-	return (height);
+	int	i;
+	int	j;
 }
