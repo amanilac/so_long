@@ -6,28 +6,28 @@
 /*   By: annamanilaci <annamanilaci@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 21:24:52 by amanilac          #+#    #+#             */
-/*   Updated: 2024/06/28 15:46:38 by annamanilac      ###   ########.fr       */
+/*   Updated: 2024/07/01 16:50:37 by annamanilac      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 
-void	is_rectangle(char **map)
+void	is_rectangle(t_long *game_data)
 {
 	int width;
 	int i;
 
 	i = 0;
-	width = (int)ft_strlen(map[i]);
-	while (map[i])
+	width = (int)ft_strlen(game_data->map[i]);
+	while (game_data->map[i])
 	{
-		if ((int)ft_strlen(map[i]) != width)
+		if ((int)ft_strlen(game_data->map[i]) != width)
 			print_error("uh-oh! that's not a rectangle!\n");
 		i++;
 	}
 }
 
-int	map_checker(char **map)
+void	map_checker(t_long *game_data)
 {
 	size_t collectible;
 	size_t start;
@@ -39,18 +39,18 @@ int	map_checker(char **map)
 	start = 0;
 	exit = 0;
 	i = 0;
-	while (map[i])
+	while (game_data->map[i])
 	{
 		j = 0;
-		while (map[i][j])
+		while (game_data->map[i][j])
 		{
-			if (map[i][j] == 'C')
+			if (game_data->map[i][j] == 'C')
 				collectible++;
-			else if (map[i][j] == 'E')
+			else if (game_data->map[i][j] == 'E')
 				exit++;
-			else if (map[i][j] == 'P')
+			else if (game_data->map[i][j] == 'P')
 				start++;
-			else if (map[i][j] != '0' && map[i][j] != '1')
+			else if (game_data->map[i][j] != '0' && game_data->map[i][j] != '1')
 				print_error("whoopsie, that's not a valid map!\n");
 			j++;
 		}
@@ -58,7 +58,7 @@ int	map_checker(char **map)
 	}
 	if (collectible < 1 || start != 1 || exit != 1)
 		print_error("a valid map must contain 1 exit, 1 starting position and at least 1 collectible 🤓\n");
-	return (collectible);
+	game_data->collectible = collectible;
 }
 
 char	*boner_grower(char *s1, char *s2)

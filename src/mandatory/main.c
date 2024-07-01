@@ -6,7 +6,7 @@
 /*   By: annamanilaci <annamanilaci@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 18:16:19 by amanilac          #+#    #+#             */
-/*   Updated: 2024/06/28 15:45:18 by annamanilac      ###   ########.fr       */
+/*   Updated: 2024/07/01 16:51:56 by annamanilac      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,10 +72,9 @@ void	print_array(char **map)
 // 		print_error("a valid map must contain 1 exit, 1 starting position and at least 1 collectible 🤓\n");
 // }
 
-static char	**parse_map(char *file)
+static void	parse_map(char *file, t_long *game_data)
 {
 	int fd;
-	char **map;
 	char *boner;
 	char *line;
 
@@ -88,17 +87,16 @@ static char	**parse_map(char *file)
 		free(line);
 		line = get_next_line(fd);
 	}
-	map = ft_split(boner, '\n');
+	game_data->map = ft_split(boner, '\n');
 	free(boner);
-	map_checker(map);
-	is_rectangle(map);
-	return (map);
+	map_checker(game_data);
+	is_rectangle(game_data);
 }
 
 int	main(int argc, char **argv)
 {
 	char	*file;
-	char	**map;
+	t_long	game_data;
 
 	if (argc != 2)
 		print_error("learn to input proper arguments bruv\n");
@@ -107,9 +105,8 @@ int	main(int argc, char **argv)
 	*argv = *argv + (ft_strlen(*argv) - 4);
 	if (ft_strncmp(*argv,".ber", 4) != 0)
 		print_error("erm, what the flip!? that's not a .ber file...\n");
-	map = parse_map(file);
-	open_window(map);
-	ft_printf("%d\n", calculate_block_size(map));
-	abandon(map);
+	parse_map(file, &game_data);
+	open_window();
+	abandon(game_data.map);
 	return(EXIT_SUCCESS);
 }

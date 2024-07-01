@@ -6,7 +6,7 @@
 /*   By: annamanilaci <annamanilaci@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 18:16:24 by amanilac          #+#    #+#             */
-/*   Updated: 2024/07/01 16:03:42 by annamanilac      ###   ########.fr       */
+/*   Updated: 2024/07/01 16:51:56 by annamanilac      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 	
 // }
 
-void	open_window(char **map)
+void	open_window(void)
 {
 	mlx_t			*window;
 	mlx_image_t 	*img;

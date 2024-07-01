@@ -6,7 +6,7 @@
 /*   By: annamanilaci <annamanilaci@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 11:59:52 by annamanilac       #+#    #+#             */
-/*   Updated: 2024/06/28 16:33:40 by annamanilac      ###   ########.fr       */
+/*   Updated: 2024/07/01 16:51:00 by annamanilac      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,4 @@ int	map_height(char **map)
 	while (map[height])
 		height++;
 	return (height);
-}
-
-int	map_width(char **map)
-{
-	return(ft_strlen(*map));
 }
