@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: annamanilaci <annamanilaci@student.42.f    +#+  +:+       +#+        */
+/*   By: amanilac <amanilac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 18:31:29 by amanilac          #+#    #+#             */
-/*   Updated: 2024/07/01 16:52:08 by annamanilac      ###   ########.fr       */
+/*   Updated: 2024/07/01 17:43:38 by amanilac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ typedef	struct s_long
 	int		collectible;
 	int		width;
 	int		height;
+	int		moves;
 }	t_long;	
 
 void	print_error(char *str);
@@ -41,11 +42,12 @@ void	is_rectangle(t_long *game_data);
 char	*boner_grower(char *s1, char *s2);
 
 void	generate_map(char **map);
-void	open_window();
+void	open_window(t_long *game_data);
 
 int		map_height(char **map); 
 int		map_width(char **map);
 
 void	move_player(char **map, mlx_t *window);
+void key_hooker(mlx_key_data_t keydata, void *param);
 
 #endif

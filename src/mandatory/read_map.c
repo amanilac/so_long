@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: annamanilaci <annamanilaci@student.42.f    +#+  +:+       +#+        */
+/*   By: amanilac <amanilac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 18:16:24 by amanilac          #+#    #+#             */
-/*   Updated: 2024/07/01 16:51:56 by annamanilac      ###   ########.fr       */
+/*   Updated: 2024/07/01 17:47:11 by amanilac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 	
 // }
 
-void	open_window(void)
+void	open_window(t_long *game_data)
 {
 	mlx_t			*window;
 	mlx_image_t 	*img;
@@ -39,6 +39,7 @@ void	open_window(void)
 	// ft_memset(img->pixels, 255, img->width * img->height * sizeof(int));
 	// if (mlx_image_to_window(window, img, 0, 0) < 0)
 	// 	print_error("Error generating image");
+	mlx_key_hook(window, &key_hooker, game_data);
 	mlx_loop(window);
 	mlx_terminate(window);
 }
