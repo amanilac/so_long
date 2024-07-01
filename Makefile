@@ -16,6 +16,7 @@ SRC_NAMES =	main.c				\
 			read_map.c			\
 			error.c				\
 			map_utils.c			\
+			parsing.c			\
 
 CC = cc
 CC_EXT_SRCS = -L$(LIB_DIR) $(LIBFT) -lft -lmlx42 -lm -lglfw
