@@ -6,7 +6,7 @@
 /*   By: annamanilaci <annamanilaci@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 18:16:24 by amanilac          #+#    #+#             */
-/*   Updated: 2024/07/02 18:54:25 by annamanilac      ###   ########.fr       */
+/*   Updated: 2024/07/02 20:38:50 by annamanilac      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,21 +78,19 @@ void	put_stuff(t_long *game_data)
 			if (game_data->map[i][j] == 'P')
 				place_player(game_data);
 			j++;
-			game_data->y_pos += game_data->block_size;
+			game_data->x_pos += game_data->block_size;
 		}
 		i++;
-		game_data->x_pos += game_data->block_size;
+		game_data->y_pos += game_data->block_size;
 	}	
 }
 
 void	open_window(t_long *game_data)
-{
-	mlx_image_t 	*img;
-	mlx_texture_t	*sale;
-
+{	
 	game_data->window = mlx_init(WIDTH, HEIGHT, "so_long", false);
 	if (!game_data->window)
 		print_error("Error opening new game_data->window");
+	put_stuff(game_data);
 	mlx_key_hook(game_data->window, &key_hooker, game_data);
 	mlx_loop(game_data->window);
 	mlx_terminate(game_data->window);
