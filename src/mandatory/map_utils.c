@@ -3,17 +3,36 @@
 /*                                                        :::      ::::::::   */
 /*   map_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amanilac <amanilac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: annamanilaci <annamanilaci@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 11:59:52 by annamanilac       #+#    #+#             */
-/*   Updated: 2024/07/01 20:07:54 by amanilac         ###   ########.fr       */
+/*   Updated: 2024/07/02 19:20:14 by annamanilac      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 
-void	player_cords(t_long	*game_utils)
+void	place_wall(t_long *game_utils)
 {
-	int	i;
-	int	j;
+
+}
+
+void	place_floor(t_long *game_utils)
+{
+
+}
+
+void	place_collectible(t_long *game_utils)
+{
+	
+}
+
+void	place_exit(t_long *game_utils)
+{
+
+}
+
+void place_player(t_long *game_utils)
+{
+	
 }

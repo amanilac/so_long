@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amanilac <amanilac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: annamanilaci <annamanilaci@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 21:24:52 by amanilac          #+#    #+#             */
-/*   Updated: 2024/07/01 19:18:38 by amanilac         ###   ########.fr       */
+/*   Updated: 2024/07/02 14:07:44 by annamanilac      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@ void	is_rectangle(t_long *game_data)
 
 void	map_checker(t_long *game_data)
 {
-	size_t collectible;
-	size_t start;
-	size_t exit;
+	int collectible;
+	int start;
+	int exit;
 	int i;
 	int j;
 
@@ -50,7 +50,11 @@ void	map_checker(t_long *game_data)
 			else if (game_data->map[i][j] == 'E')
 				exit++;
 			else if (game_data->map[i][j] == 'P')
+			{
 				start++;
+				game_data->player_x = i;
+				game_data->player_y = j;
+			}
 			else if (game_data->map[i][j] != '0' && game_data->map[i][j] != '1')
 				print_error("whoopsie, that's not a valid map!\n");
 			j++;

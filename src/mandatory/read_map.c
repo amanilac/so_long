@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amanilac <amanilac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: annamanilaci <annamanilaci@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 18:16:24 by amanilac          #+#    #+#             */
-/*   Updated: 2024/07/01 19:55:05 by amanilac         ###   ########.fr       */
+/*   Updated: 2024/07/02 18:54:25 by annamanilac      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,47 +28,61 @@ void	size_blocks(t_long	*game_data)
 	game_data->block_size = new_size;
 }
 
+void init_textures(t_long *game_data, t_files *blox)
+{
+	blox->wall = mlx_load_png("./textures/wall.png");
+	if (!blox->wall)
+		print_error(":()");
+	blox->imgs->wall = mlx_texture_to_image(game_data->window, blox->wall);
+	blox->floor = mlx_load_png("./textures/floor.png");
+	if (!blox->floor)
+		print_error(":()");
+	blox->imgs->floor = mlx_texture_to_image(game_data->window, blox->floor);
+	blox->collectible = mlx_load_png("./textures/diamond.png");
+	if (!blox->collectible)
+		print_error(":()");
+	blox->imgs->collectible = mlx_texture_to_image(game_data->window, blox->collectible);
+	blox->exit = mlx_load_png("./textures/exit.png");
+	if (!blox->exit)
+		print_error(":()");
+	blox->imgs->exit = mlx_texture_to_image(game_data->window, blox->exit);
+	blox->player = mlx_load_png("./textures/player.png");
+	if (!blox->player)
+		print_error(":()");
+	blox->imgs->player = mlx_texture_to_image(game_data->window, blox->player);
+}
+
 void	put_stuff(t_long *game_data)
 {
 	int	i;
 	int	j;
 
-	size_blocks(game_data);
-	
-}
-
-void	place_walls(t_long *game_data)
-{
-	mlx_image_t		*also_wall;
-	mlx_texture_t	*wall;
-	int				y;
-	int				x;
-	int				i;
-	int				j;
-
-	y = 0;
-	x = 0;
 	i = 0;
-	wall = mlx_load_png("./textures/wall.png");
-	if (!wall)
-		print_error("oops");
-	also_wall = mlx_texture_to_image(game_data->window, wall);
-	mlx_resize_image(also_wall, game_data->block_size, game_data->block_size); 
-	if (!wall)
-		print_error("Error generating image");
+	game_data->x_pos = 0;
+	game_data->y_pos = 0;
+	size_blocks(game_data);
+	init_textures(game_data, game_data->blox);
 	while (game_data->map[i])
 	{
 		j = 0;
-		while (game_data->map[i][j])
+		while(game_data->map[i][j])
 		{
-			if (game_data->map[i][j] == 1)
-				mlx_image_to_window(game_data->window, also_wall, x, y);
-			x += game_data->block_size;
+			if (game_data->map[i][j] == '1')
+				place_wall(game_data);
+			if (game_data->map[i][j] == '0')
+				place_floor(game_data);
+			if (game_data->map[i][j] == 'C')
+				place_collectible(game_data);
+			if (game_data->map[i][j] == 'E')
+				place_exit(game_data);
+			if (game_data->map[i][j] == 'P')
+				place_player(game_data);
 			j++;
+			game_data->y_pos += game_data->block_size;
 		}
-		y += game_data->block_size;
 		i++;
-	}
+		game_data->x_pos += game_data->block_size;
+	}	
 }
 
 void	open_window(t_long *game_data)
@@ -76,19 +90,9 @@ void	open_window(t_long *game_data)
 	mlx_image_t 	*img;
 	mlx_texture_t	*sale;
 
-	sale = mlx_load_png("./textures/sale.png");
 	game_data->window = mlx_init(WIDTH, HEIGHT, "so_long", false);
 	if (!game_data->window)
 		print_error("Error opening new game_data->window");
-	sale = mlx_load_png("./textures/sale.png");
-	if (!sale)
-		print_error("oops");
-	img = mlx_texture_to_image(game_data->window, sale);
-	mlx_resize_image(img, WIDTH, HEIGHT);
-	place_walls(game_data);
-	if (!img || (mlx_image_to_window(game_data->window, img, 0, 0) < 0))
-		print_error("Error generating image");
-	// place_walls(game_data);
 	mlx_key_hook(game_data->window, &key_hooker, game_data);
 	mlx_loop(game_data->window);
 	mlx_terminate(game_data->window);

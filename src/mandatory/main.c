@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amanilac <amanilac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: annamanilaci <annamanilaci@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 18:16:19 by amanilac          #+#    #+#             */
-/*   Updated: 2024/07/01 19:19:50 by amanilac         ###   ########.fr       */
+/*   Updated: 2024/07/02 15:42:08 by annamanilac      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,54 +23,6 @@ void	print_array(char **map)
 		arr++;
 	}
 }
-
-// static void	is_rectangle(char **map)
-// {
-// 	int 	width;
-// 	int		i;
-
-// 	i = 0;
-// 	width = (int)ft_strlen(map[i]);
-// 	while (map[i])
-// 	{
-// 		if ((int)ft_strlen(map[i]) != width)
-// 			print_error("uh-oh! that's not a rectangle!\n");
-// 		i++;
-// 	}
-// }
-
-// static void	map_checker(char **map)
-// {
-// 	size_t	collectible;
-// 	size_t	start;
-// 	size_t	exit;
-// 	int 	i;
-// 	int		j;
-
-// 	collectible = 0;
-// 	start = 0;
-// 	exit = 0;
-// 	i = 0;
-// 	while (map[i])
-// 	{
-// 		j = 0;
-// 		while (map[i][j])
-// 		{
-// 			if (map[i][j] == 'C')
-// 				collectible++;
-// 			else if (map[i][j] == 'E')
-// 				exit++;
-// 			else if (map[i][j] == 'P')
-// 				start++;
-// 			else if (map[i][j] != '0' && map[i][j] != '1')
-// 					print_error("whoopsie, that's not a valid map!\n");
-// 			j++;
-// 		}
-// 		i++;
-// 	}
-// 	if (collectible < 1 || start != 1 || exit != 1)
-// 		print_error("a valid map must contain 1 exit, 1 starting position and at least 1 collectible 🤓\n");
-// }
 
 static void	parse_map(char *file, t_long *game_data)
 {
@@ -99,6 +51,8 @@ int	main(int argc, char **argv)
 {
 	char	*file;
 	t_long	game_data;
+	t_files	textures;
+	t_img	images;
 
 	if (argc != 2)
 		print_error("learn to input proper arguments bruv\n");

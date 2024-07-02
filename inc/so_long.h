@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amanilac <amanilac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: annamanilaci <annamanilaci@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 18:31:29 by amanilac          #+#    #+#             */
-/*   Updated: 2024/07/01 19:52:11 by amanilac         ###   ########.fr       */
+/*   Updated: 2024/07/02 15:53:21 by annamanilac      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 #include <stdio.h>
 #include <fcntl.h>
 
-typedef	struct s_long
+typedef	struct	s_long
 {
 	mlx_t	*window;
 	char	**map;
@@ -36,7 +36,28 @@ typedef	struct s_long
 	int		height;
 	int		moves;
 	int		block_size;
+	t_files	*blox,
 }	t_long;	
+
+typedef struct	s_files
+{
+	mlx_texture_t	*wall;
+	mlx_texture_t	*player;
+	mlx_texture_t	*exit;
+	mlx_texture_t	*collectible;
+	mlx_texture_t	*floor;
+	t_img			*imgs;
+}	t_files;
+
+typedef struct	s_img
+{
+	mlx_image_t *wall;
+	mlx_image_t *floor;
+	mlx_image_t *exit;
+	mlx_image_t *player;
+	mlx_image_t *collectible;
+} t_img;
+
 
 void	print_error(char *str);
 void	abandon(char **strings);
@@ -52,6 +73,8 @@ int		map_height(char **map);
 int		map_width(char **map);
 
 void	move_player(char **map, mlx_t *window);
-void key_hooker(mlx_key_data_t keydata, void *param);
+void 	key_hooker(mlx_key_data_t keydata, void *param);
+
+void	init_textures(t_long *game_data, t_files *blox);
 
 #endif
