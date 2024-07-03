@@ -6,7 +6,7 @@
 /*   By: amanilac <amanilac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 16:03:39 by annamanilac       #+#    #+#             */
-/*   Updated: 2024/07/03 18:12:18 by amanilac         ###   ########.fr       */
+/*   Updated: 2024/07/03 18:53:58 by amanilac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void	print_array(char **map)
 	}
 }
 
-static void	move_up(t_long *game_data)
+void	move_up(t_long *game_data)
 {
 	int x;
 	int y;
@@ -43,12 +43,15 @@ static void	move_up(t_long *game_data)
 			game_data->map[x - 1][y] = 'P';
 			game_data->player_x -= 1;
 			game_data->moves += 1;
+			game_data->x_pos = game_data->player_x * game_data->block_size;
+			game_data->y_pos = game_data->player_y * game_data->block_size;
+			move_player(game_data, game_data->x_pos, game_data->y_pos);
 			ft_printf("%d\n", game_data->moves);
 		}
 	}
 }
 
-static void move_down(t_long *game_data)
+void	move_down(t_long *game_data)
 {
 	int x;
 	int y;
@@ -67,12 +70,15 @@ static void move_down(t_long *game_data)
 			game_data->map[x + 1][y] = 'P';
 			game_data->player_x += 1;
 			game_data->moves += 1;
+			game_data->x_pos = game_data->player_x * game_data->block_size;
+			game_data->y_pos = game_data->player_y * game_data->block_size;
+			move_player(game_data, game_data->x_pos, game_data->y_pos);
 			ft_printf("%d\n", game_data->moves);
 		}
 	}
 }
 
-static void move_left(t_long *game_data)
+void	move_left(t_long *game_data)
 {
 	int x;
 	int y;
@@ -91,12 +97,15 @@ static void move_left(t_long *game_data)
 			game_data->map[x][y - 1] = 'P';
 			game_data->player_y -= 1;
 			game_data->moves += 1;
+			game_data->x_pos = game_data->player_x * game_data->block_size;
+			game_data->y_pos = game_data->player_y * game_data->block_size;
+			move_player(game_data, game_data->x_pos, game_data->y_pos);
 			ft_printf("%d\n", game_data->moves);
 		}
 	}
 }
 
-static void move_right(t_long *game_data)
+void	move_right(t_long *game_data)
 {
 	int x;
 	int y;
@@ -115,6 +124,9 @@ static void move_right(t_long *game_data)
 			game_data->map[x][y + 1] = 'P';
 			game_data->player_y += 1;
 			game_data->moves += 1;
+			game_data->x_pos = game_data->player_x * game_data->block_size;
+			game_data->y_pos = game_data->player_y * game_data->block_size;
+			move_player(game_data, game_data->x_pos, game_data->y_pos);
 			ft_printf("%d\n", game_data->moves);
 		}
 	}

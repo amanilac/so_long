@@ -6,7 +6,7 @@
 /*   By: amanilac <amanilac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 18:31:29 by amanilac          #+#    #+#             */
-/*   Updated: 2024/07/03 15:39:19 by amanilac         ###   ########.fr       */
+/*   Updated: 2024/07/03 18:53:57 by amanilac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,11 @@ char	*boner_grower(char *s1, char *s2);
 void	generate_map(char **map);
 void	open_window(t_long *game_data);
 
-void	move_player(char **map, mlx_t *window);
 void 	key_hooker(mlx_key_data_t keydata, void *param);
+void	move_up(t_long *game_data);
+void	move_down(t_long *game_data);
+void	move_left(t_long *game_data);
+void	move_right(t_long *game_data);
 
 void	init_textures(t_long *game_data, t_files *blox, t_img *imgs);
 void	init_imgs(t_long *game_data, t_files *blox, t_img *imgs);
@@ -79,5 +82,7 @@ void	place_floor(t_long *game_utils);
 void	place_collectible(t_long *game_utils);
 void	place_exit(t_long *game_utils);
 void	place_player(t_long *game_utils);
+
+void	move_player(t_long *game_data, int x, int y);
 
 #endif

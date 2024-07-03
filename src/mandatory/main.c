@@ -6,7 +6,7 @@
 /*   By: amanilac <amanilac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 18:16:19 by amanilac          #+#    #+#             */
-/*   Updated: 2024/07/03 15:25:18 by amanilac         ###   ########.fr       */
+/*   Updated: 2024/07/03 19:10:14 by amanilac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,10 @@ static void	parse_map(char *file, t_long *game_data)
 
 int	main(int argc, char **argv)
 {
-	char	*file;
-	t_long	game_data;
-	t_files	blox;
-	t_img	imgs;
+	char			*file;
+	t_long			game_data;
+	t_files			blox;
+	t_img			imgs;
 
 	if (argc != 2)
 		print_error("learn to input proper arguments bruv\n");
@@ -65,6 +65,7 @@ int	main(int argc, char **argv)
 	blox.imgs = &imgs;
 	parse_map(file, &game_data);
 	init_textures(&game_data, &blox, &imgs);
+	
 	open_window(&game_data);
 	abandon(game_data.map);
 	return(EXIT_SUCCESS);
