@@ -6,7 +6,7 @@
 /*   By: annamanilaci <annamanilaci@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 18:16:24 by amanilac          #+#    #+#             */
-/*   Updated: 2024/07/02 20:38:50 by annamanilac      ###   ########.fr       */
+/*   Updated: 2024/07/03 14:47:27 by annamanilac      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,28 +28,28 @@ void	size_blocks(t_long	*game_data)
 	game_data->block_size = new_size;
 }
 
-void init_textures(t_long *game_data, t_files *blox)
+void init_textures(t_long *game_data, t_files *blox, t_img *imgs)
 {
 	blox->wall = mlx_load_png("./textures/wall.png");
 	if (!blox->wall)
 		print_error(":()");
-	blox->imgs->wall = mlx_texture_to_image(game_data->window, blox->wall);
+	imgs->wall = mlx_texture_to_image(game_data->window, blox->wall);
 	blox->floor = mlx_load_png("./textures/floor.png");
 	if (!blox->floor)
 		print_error(":()");
-	blox->imgs->floor = mlx_texture_to_image(game_data->window, blox->floor);
+	imgs->floor = mlx_texture_to_image(game_data->window, blox->floor);
 	blox->collectible = mlx_load_png("./textures/diamond.png");
 	if (!blox->collectible)
 		print_error(":()");
-	blox->imgs->collectible = mlx_texture_to_image(game_data->window, blox->collectible);
+	imgs->collectible = mlx_texture_to_image(game_data->window, blox->collectible);
 	blox->exit = mlx_load_png("./textures/exit.png");
 	if (!blox->exit)
 		print_error(":()");
-	blox->imgs->exit = mlx_texture_to_image(game_data->window, blox->exit);
+	imgs->exit = mlx_texture_to_image(game_data->window, blox->exit);
 	blox->player = mlx_load_png("./textures/player.png");
 	if (!blox->player)
 		print_error(":()");
-	blox->imgs->player = mlx_texture_to_image(game_data->window, blox->player);
+	imgs->player = mlx_texture_to_image(game_data->window, blox->player);
 }
 
 void	put_stuff(t_long *game_data)
@@ -61,7 +61,6 @@ void	put_stuff(t_long *game_data)
 	game_data->x_pos = 0;
 	game_data->y_pos = 0;
 	size_blocks(game_data);
-	init_textures(game_data, game_data->blox);
 	while (game_data->map[i])
 	{
 		j = 0;

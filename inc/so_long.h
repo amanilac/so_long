@@ -6,7 +6,7 @@
 /*   By: annamanilaci <annamanilaci@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 18:31:29 by amanilac          #+#    #+#             */
-/*   Updated: 2024/07/02 19:55:50 by annamanilac      ###   ########.fr       */
+/*   Updated: 2024/07/03 14:47:02 by annamanilac      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void	open_window(t_long *game_data);
 void	move_player(char **map, mlx_t *window);
 void 	key_hooker(mlx_key_data_t keydata, void *param);
 
-void	init_textures(t_long *game_data, t_files *blox);
+void	init_textures(t_long *game_data, t_files *blox, t_img *imgs);
 
 void 	place_wall(t_long *game_utils);
 void	place_floor(t_long *game_utils);
