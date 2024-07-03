@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: annamanilaci <annamanilaci@student.42.f    +#+  +:+       +#+        */
+/*   By: amanilac <amanilac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 18:31:29 by amanilac          #+#    #+#             */
-/*   Updated: 2024/07/03 14:47:02 by annamanilac      ###   ########.fr       */
+/*   Updated: 2024/07/03 15:39:19 by amanilac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,9 @@ void	move_player(char **map, mlx_t *window);
 void 	key_hooker(mlx_key_data_t keydata, void *param);
 
 void	init_textures(t_long *game_data, t_files *blox, t_img *imgs);
+void	init_imgs(t_long *game_data, t_files *blox, t_img *imgs);
 
-void 	place_wall(t_long *game_utils);
+void	place_wall(t_long *game_utils);
 void	place_floor(t_long *game_utils);
 void	place_collectible(t_long *game_utils);
 void	place_exit(t_long *game_utils);

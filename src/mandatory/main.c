@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: annamanilaci <annamanilaci@student.42.f    +#+  +:+       +#+        */
+/*   By: amanilac <amanilac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 18:16:19 by amanilac          #+#    #+#             */
-/*   Updated: 2024/07/03 14:46:43 by annamanilac      ###   ########.fr       */
+/*   Updated: 2024/07/03 15:25:18 by amanilac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,8 @@ int	main(int argc, char **argv)
 	*argv = *argv + (ft_strlen(*argv) - 4);
 	if (ft_strncmp(*argv,".ber", 4) != 0)
 		print_error("erm, what the flip!? that's not a .ber file...\n");
+	game_data.blox = &blox;
+	blox.imgs = &imgs;
 	parse_map(file, &game_data);
 	init_textures(&game_data, &blox, &imgs);
 	open_window(&game_data);
