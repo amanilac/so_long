@@ -6,7 +6,7 @@
 /*   By: amanilac <amanilac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 18:16:24 by amanilac          #+#    #+#             */
-/*   Updated: 2024/07/03 15:41:17 by amanilac         ###   ########.fr       */
+/*   Updated: 2024/07/03 17:59:12 by amanilac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,8 @@ void	put_stuff(t_long *game_data)
 }
 
 void	open_window(t_long *game_data)
-{	
+{
+	game_data->moves = 0;
 	put_stuff(game_data);
 	mlx_key_hook(game_data->window, &key_hooker, game_data);
 	mlx_loop(game_data->window);

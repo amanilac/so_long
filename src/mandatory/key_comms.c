@@ -6,32 +6,138 @@
 /*   By: amanilac <amanilac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 16:03:39 by annamanilac       #+#    #+#             */
-/*   Updated: 2024/07/01 17:56:36 by amanilac         ###   ########.fr       */
+/*   Updated: 2024/07/03 18:06:27 by amanilac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 
-void	key_hooker(mlx_key_data_t keydata, void *param)
+static void	print_array(char **map)
 {
-	t_long	*data;
+	int i;
+
+	i = 0;
+	while (map[i])
+	{
+		ft_printf("%s\n", map[i]);
+		i++;
+	}
+}
+
+static void	move_up(t_long *game_data)
+{
+	int x;
+	int y;
+
+	x = game_data->player_x;
+	y = game_data->player_y;
+	if ((game_data->map[x - 1][y] && game_data->map[x - 1][y] != 'E') || (game_data->map[x - 1][y] && game_data->map[x - 1][y] == 'E' && game_data->collectible == 0))
+	{
+		if (game_data->map[x - 1][y] && game_data->map[x - 1][y] != '1')
+		{
+			if (game_data->map[x - 1][y] == 'E' && game_data->collectible == 0)
+				exit (EXIT_SUCCESS);
+			if (game_data->map[x - 1][y] == 'C' && game_data->collectible > 0)
+				game_data->collectible -= 1;
+			game_data->map[x][y] = '0';
+			game_data->map[x - 1][y] = 'P';
+			game_data->player_x -= 1;
+			game_data->moves += 1;
+			ft_printf("%d\n", game_data->moves);
+		}
+	}
+}
+
+static void move_down(t_long *game_data)
+{
+	int x;
+	int y;
+
+	x = game_data->player_x;
+	y = game_data->player_y;
+	if ((game_data->map[x + 1][y] && game_data->map[x + 1][y] != 'E') || (game_data->map[x + 1][y] && game_data->map[x + 1][y] == 'E' && game_data->collectible == 0))
+	{
+		if (game_data->map[x + 1][y] && game_data->map[x + 1][y] != '1')
+		{
+			if (game_data->map[x + 1][y] == 'E' && game_data->collectible == 0)
+				exit (EXIT_SUCCESS);
+			if (game_data->map[x + 1][y] == 'C' && game_data->collectible > 0)
+					game_data->collectible -= 1;
+			game_data->map[x][y] = '0';
+			game_data->map[x + 1][y] = 'P';
+			game_data->player_x += 1;
+			game_data->moves += 1;
+			ft_printf("%d\n", game_data->moves);
+		}
+	}
+}
+
+static void move_left(t_long *game_data)
+{
+	int x;
+	int y;
+
+	x = game_data->player_x;
+	y = game_data->player_y;
+	if ((game_data->map[x][y - 1] && game_data->map[x][y - 1] != 'E') || (game_data->map[x][y - 1] && game_data->map[x][y - 1] == 'E' && game_data->collectible == 0))
+	{
+		if (game_data->map[x][y - 1] && game_data->map[x][y - 1] != '1')
+		{
+			if (game_data->map[x][y - 1] == 'E' && game_data->collectible == 0)
+				exit (EXIT_SUCCESS);
+			if (game_data->map[x][y - 1] == 'C' && game_data->collectible > 0)
+					game_data->collectible -= 1;
+			game_data->map[x][y] = '0';
+			game_data->map[x][y - 1] = 'P';
+			game_data->player_y -= 1;
+			game_data->moves += 1;
+			ft_printf("%d\n", game_data->moves);
+		}
+	}
+}
+
+static void move_right(t_long *game_data)
+{
+	int x;
+	int y;
+
+	x = game_data->player_x;
+	y = game_data->player_y;
+	if ((game_data->map[x][y + 1] && game_data->map[x][y + 1] != 'E') || (game_data->map[x][y + 1] && game_data->map[x][y + 1] == 'E' && game_data->collectible == 0))
+	{
+		if (game_data->map[x][y + 1] && game_data->map[x][y + 1] != '1')
+		{
+			if (game_data->map[x][y + 1] == 'E' && game_data->collectible == 0)
+				exit (EXIT_SUCCESS);
+			if (game_data->map[x][y + 1] == 'C' && game_data->collectible > 0)
+					game_data->collectible -= 1;
+			game_data->map[x][y] = '0';
+			game_data->map[x][y + 1] = 'P';
+			game_data->player_y += 1;
+			game_data->moves += 1;
+			ft_printf("%d\n", game_data->moves);
+		}
+	}
+}
+
+void key_hooker(mlx_key_data_t keydata, void *param)
+{
+	t_long *data;
 
 	data = param;
-	data->moves = 0;
 	if ((keydata.key == MLX_KEY_UP || keydata.key == MLX_KEY_W) && (keydata.action == MLX_PRESS))
-		ft_printf("MOVE UP\n");
+		move_up(data);
 	if ((keydata.key == MLX_KEY_DOWN || keydata.key == MLX_KEY_S) && (keydata.action == MLX_PRESS))
-		ft_printf("MOVE DOWN\n");	
+		move_down(data);
 	if ((keydata.key == MLX_KEY_LEFT || keydata.key == MLX_KEY_A) && (keydata.action == MLX_PRESS))
-		ft_printf("MOVE LEFT\n");
+		move_left(data);
 	if ((keydata.key == MLX_KEY_RIGHT || keydata.key == MLX_KEY_D) && (keydata.action == MLX_PRESS))
-		ft_printf("MOVE RIGHT\n");
+		move_right(data);
 	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
 	{
 		mlx_close_window(data->window);
 		mlx_terminate(data->window);
 		exit(EXIT_SUCCESS);
 	}
+	print_array(data->map);
 }
-
-
