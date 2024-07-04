@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: annamanilaci <annamanilaci@student.42.f    +#+  +:+       +#+        */
+/*   By: amanilac <amanilac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 21:24:52 by amanilac          #+#    #+#             */
-/*   Updated: 2024/07/02 14:07:44 by annamanilac      ###   ########.fr       */
+/*   Updated: 2024/07/04 15:15:14 by amanilac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,33 +33,33 @@ void	map_checker(t_long *game_data)
 	int collectible;
 	int start;
 	int exit;
-	int i;
-	int j;
+	int y;
+	int x;
 
 	collectible = 0;
 	start = 0;
 	exit = 0;
-	i = 0;
-	while (game_data->map[i])
+	y = 0;
+	while (game_data->map[y])
 	{
-		j = 0;
-		while (game_data->map[i][j])
+		x = 0;
+		while (game_data->map[y][x])
 		{
-			if (game_data->map[i][j] == 'C')
+			if (game_data->map[y][x] == 'C')
 				collectible++;
-			else if (game_data->map[i][j] == 'E')
+			else if (game_data->map[y][x] == 'E')
 				exit++;
-			else if (game_data->map[i][j] == 'P')
+			else if (game_data->map[y][x] == 'P')
 			{
 				start++;
-				game_data->player_x = i;
-				game_data->player_y = j;
+				game_data->player_x = x;
+				game_data->player_y = y;
 			}
-			else if (game_data->map[i][j] != '0' && game_data->map[i][j] != '1')
+			else if (game_data->map[y][x] != '0' && game_data->map[y][x] != '1')
 				print_error("whoopsie, that's not a valid map!\n");
-			j++;
+			x++;
 		}
-		i++;
+		y++;
 	}
 	if (collectible < 1 || start != 1 || exit != 1)
 		print_error("a valid map must contain 1 exit, 1 starting position and at least 1 collectible 🤓\n");

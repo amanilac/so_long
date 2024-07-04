@@ -6,7 +6,7 @@
 /*   By: amanilac <amanilac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 18:16:24 by amanilac          #+#    #+#             */
-/*   Updated: 2024/07/03 19:07:05 by amanilac         ###   ########.fr       */
+/*   Updated: 2024/07/04 17:13:41 by amanilac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ void	size_blocks(t_long	*game_data)
 
 void init_textures(t_long *game_data, t_files *blox, t_img *imgs)
 {
-	game_data->window = mlx_init(WIDTH, HEIGHT, "so_long", false);
+	game_data->window = mlx_init(WIDTH, HEIGHT, "so_long", true);
+	// game_data->blox->imgs->player->instances->z = 1;
 	if (!game_data->window)
 		print_error("Error initializing window");
 	blox->wall = mlx_load_png("./textures/wall.png");
@@ -68,34 +69,13 @@ void	init_imgs(t_long *game_data, t_files *blox, t_img *imgs)
 
 void	put_stuff(t_long *game_data)
 {
-	int	i;
-	int	j;
-
-	i = 0;
 	game_data->x_pos = 0;
 	game_data->y_pos = 0;
-	while (game_data->map[i])
-	{
-		j = 0;
-		while(game_data->map[i][j])
-		{
-			if (game_data->map[i][j] == '1')
-				place_wall(game_data);
-			if (game_data->map[i][j] == '0')
-				place_floor(game_data);
-			if (game_data->map[i][j] == 'C')
-				place_collectible(game_data);
-			if (game_data->map[i][j] == 'E')
-				place_exit(game_data);
-			if (game_data->map[i][j] == 'P')
-				place_player(game_data);
-			j++;
-			game_data->x_pos += game_data->block_size;
-		}
-		i++;
-		game_data->y_pos += game_data->block_size;
-		game_data->x_pos = 0;	
-	}	
+	place_floor(game_data);
+	place_wall(game_data);
+	place_collectible(game_data);
+	place_exit(game_data);
+	place_player(game_data);
 }
 
 void	open_window(t_long *game_data)
