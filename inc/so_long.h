@@ -6,15 +6,15 @@
 /*   By: amanilac <amanilac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 18:31:29 by amanilac          #+#    #+#             */
-/*   Updated: 2024/07/03 18:53:57 by amanilac         ###   ########.fr       */
+/*   Updated: 2024/07/04 17:22:09 by amanilac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# define WIDTH 1024
-# define HEIGHT 1024
+# define WIDTH 2048
+# define HEIGHT 2048
 
 #include "libft.h"
 #include "MLX42.h"

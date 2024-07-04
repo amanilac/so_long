@@ -17,7 +17,6 @@ SRC_NAMES =	main.c				\
 			error.c				\
 			map_utils.c			\
 			parsing.c			\
-			key_comms.c			\
 			movement.c			\
 
 CC = cc
