@@ -6,7 +6,7 @@
 /*   By: amanilac <amanilac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 15:31:50 by annamanilac       #+#    #+#             */
-/*   Updated: 2024/07/08 15:48:45 by amanilac         ###   ########.fr       */
+/*   Updated: 2024/07/08 16:56:52 by amanilac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void key_hooker(mlx_key_data_t keydata, void *param)
 		mlx_terminate(data->window);
 		exit(EXIT_SUCCESS);
 	}
-	print_array(data->map);
+	// print_array(data->map);
 }
 
 void move_up(t_long *game_data)
@@ -53,6 +53,7 @@ void move_up(t_long *game_data)
 	{
 		if (game_data->map[y - 1][x] && game_data->map[y - 1][x] != '1')
 		{
+			game_data->player_y -= 1;
 			game_data->y_pos = game_data->player_y * game_data->block_size;
 			if (game_data->map[y - 1][x] == 'E' && game_data->collectible == 0)
 				exit(EXIT_SUCCESS);
@@ -60,7 +61,6 @@ void move_up(t_long *game_data)
 				hide_collectible(game_data);
 			game_data->map[y][x] = '0';
 			game_data->map[y - 1][x] = 'P';
-			game_data->player_y -= 1;
 			game_data->moves += 1;
 			while (move < game_data->block_size)
 			{
@@ -85,6 +85,7 @@ void move_down(t_long *game_data)
 	{
 		if (game_data->map[y + 1][x] && game_data->map[y + 1][x] != '1')
 		{
+			game_data->player_y += 1;
 			game_data->y_pos = game_data->player_y * game_data->block_size;
 			if (game_data->map[y + 1][x] == 'E' && game_data->collectible == 0)
 				exit(EXIT_SUCCESS);
@@ -92,7 +93,6 @@ void move_down(t_long *game_data)
 				hide_collectible(game_data);
 			game_data->map[y][x] = '0';
 			game_data->map[y + 1][x] = 'P';
-			game_data->player_y += 1;
 			game_data->moves += 1;
 			while (move < game_data->block_size)
 			{
@@ -117,6 +117,7 @@ void move_left(t_long *game_data)
 	{
 		if (game_data->map[y][x - 1] && game_data->map[y][x - 1] != '1')
 		{
+			game_data->player_x -= 1;
 			game_data->x_pos = game_data->player_x * game_data->block_size;
 			if (game_data->map[y][x - 1] == 'E' && game_data->collectible == 0)
 				exit(EXIT_SUCCESS);
@@ -124,7 +125,6 @@ void move_left(t_long *game_data)
 				hide_collectible(game_data);
 			game_data->map[y][x] = '0';
 			game_data->map[y][x - 1] = 'P';
-			game_data->player_x -= 1;
 			game_data->moves += 1;
 			while (move < game_data->block_size)
 			{
@@ -149,6 +149,7 @@ void move_right(t_long *game_data)
 	{
 		if (game_data->map[y][x + 1] && game_data->map[y][x + 1] != '1')
 		{
+			game_data->player_x += 1;
 			game_data->x_pos = game_data->player_x * game_data->block_size;
 			if (game_data->map[y][x + 1] == 'E' && game_data->collectible == 0)
 				exit(EXIT_SUCCESS);
@@ -156,7 +157,6 @@ void move_right(t_long *game_data)
 				hide_collectible(game_data);
 			game_data->map[y][x] = '0';
 			game_data->map[y][x + 1] = 'P';
-			game_data->player_x += 1;
 			game_data->moves += 1;
 			while (move < game_data->block_size)
 			{
@@ -173,8 +173,6 @@ static void	hide_collectible(t_long *game_data)
 	int	i;
 
 	i = 0;
-	ft_printf("we out here removing a collectible at x_pos:%d and y_pos%d\n GANG GANG\n", game_data->x_pos, game_data->y_pos);
-	ft_printf("we out here removing a collectible at instance_x:%d and instamce_y%d\n GANG GANG\n", game_data->blox->imgs->collectible[i]->instances->x, game_data->blox->imgs->collectible[i]->instances->y); 
 	while (i < game_data->collectible_origin)
 	{
 		if (game_data->blox->imgs->collectible[i]->instances->y == game_data->y_pos && game_data->blox->imgs->collectible[i]->instances->x == game_data->x_pos)

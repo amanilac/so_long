@@ -6,7 +6,7 @@
 /*   By: amanilac <amanilac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 18:16:19 by amanilac          #+#    #+#             */
-/*   Updated: 2024/07/08 15:23:57 by amanilac         ###   ########.fr       */
+/*   Updated: 2024/07/08 16:57:13 by amanilac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,5 @@ int	main(int argc, char **argv)
 	parse_map(file, &game_data);
 	init_textures(&game_data, &blox, &imgs);
 	open_window(&game_data);
-	abandon((void **)game_data.map);
-	abandon((void **)imgs.collectible);
 	return(EXIT_SUCCESS);
 }

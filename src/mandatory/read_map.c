@@ -6,7 +6,7 @@
 /*   By: amanilac <amanilac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 18:16:24 by amanilac          #+#    #+#             */
-/*   Updated: 2024/07/08 15:28:38 by amanilac         ###   ########.fr       */
+/*   Updated: 2024/07/08 17:02:43 by amanilac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ void	init_imgs(t_long *game_data, t_files *blox, t_img *imgs)
 	int	i;
 
 	i = 0;
-	ft_printf("collectibles: %d\n", game_data->collectible);
 	imgs->collectible = ft_calloc(game_data->collectible, sizeof (mlx_image_t *));
 	size_blocks(game_data);
 	imgs->wall = mlx_texture_to_image(game_data->window, blox->wall);
