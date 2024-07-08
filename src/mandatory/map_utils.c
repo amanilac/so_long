@@ -6,7 +6,7 @@
 /*   By: amanilac <amanilac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 11:59:52 by annamanilac       #+#    #+#             */
-/*   Updated: 2024/07/04 17:54:58 by amanilac         ###   ########.fr       */
+/*   Updated: 2024/07/08 15:27:45 by amanilac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,15 @@ void place_collectible(t_long *game_data)
 {
 	int x;
 	int y;
+	int i;
 
 	y = 0;
+	i = 0;
+	ft_printf("address of mlx pointer:%p\n", game_data->window);
+	ft_printf("address of blox:%p\n", game_data->blox);
+	ft_printf("address of imgs:%p\n", game_data->blox->imgs);
+	ft_printf("address of collectible:%p\n", game_data->blox->imgs->collectible);
+	ft_printf("address of collectible at index 0:%p\n", game_data->blox->imgs->collectible[i]);
 	while (game_data->map[y])
 	{
 		x = 0;
@@ -77,8 +84,9 @@ void place_collectible(t_long *game_data)
 		{
 			if (game_data->map[y][x] == 'C')
 			{
-				if (mlx_image_to_window(game_data->window, game_data->blox->imgs->collectible, game_data->x_pos, game_data->y_pos) < 0)
+				if (mlx_image_to_window(game_data->window, game_data->blox->imgs->collectible[i], game_data->x_pos, game_data->y_pos) < 0)
 					print_error("Trouble generating blocks🫥");
+				i++;
 			}
 			x++;
 			game_data->x_pos += game_data->block_size;

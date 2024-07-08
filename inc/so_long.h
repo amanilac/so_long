@@ -6,7 +6,7 @@
 /*   By: amanilac <amanilac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 18:31:29 by amanilac          #+#    #+#             */
-/*   Updated: 2024/07/04 17:22:09 by amanilac         ###   ########.fr       */
+/*   Updated: 2024/07/08 15:48:00 by amanilac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,21 +25,21 @@
 
 typedef struct s_img
 {
-	mlx_image_t *wall;
-	mlx_image_t *floor;
-	mlx_image_t *exit;
-	mlx_image_t *player;
-	mlx_image_t *collectible;
+	mlx_image_t	*wall;
+	mlx_image_t	*floor;
+	mlx_image_t	*exit;
+	mlx_image_t	*player;
+	mlx_image_t	**collectible;
 } t_img;
 
 typedef struct s_files
 {
-	mlx_texture_t *wall;
-	mlx_texture_t *player;
-	mlx_texture_t *exit;
-	mlx_texture_t *collectible;
-	mlx_texture_t *floor;
-	t_img *imgs;
+	mlx_texture_t	*wall;
+	mlx_texture_t	*player;
+	mlx_texture_t	*exit;
+	mlx_texture_t	*collectible;
+	mlx_texture_t	*floor;
+	t_img			*imgs;
 } t_files;
 
 typedef	struct	s_long
@@ -51,6 +51,7 @@ typedef	struct	s_long
 	int		x_pos;
 	int		y_pos;
 	int		collectible;
+	int		collectible_origin;
 	int		width;
 	int		height;
 	int		moves;
@@ -59,7 +60,7 @@ typedef	struct	s_long
 }	t_long;	
 
 void	print_error(char *str);
-void	abandon(char **strings);
+void	abandon(void **ptr);
 
 void	map_checker(t_long *game_data);
 void	is_rectangle(t_long *game_data);
@@ -83,6 +84,6 @@ void	place_collectible(t_long *game_utils);
 void	place_exit(t_long *game_utils);
 void	place_player(t_long *game_utils);
 
-void	move_player(t_long *game_data, int x, int y);
+void print_array(char **map);
 
 #endif

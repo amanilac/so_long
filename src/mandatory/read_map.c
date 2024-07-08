@@ -6,7 +6,7 @@
 /*   By: amanilac <amanilac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 18:16:24 by amanilac          #+#    #+#             */
-/*   Updated: 2024/07/04 17:13:41 by amanilac         ###   ########.fr       */
+/*   Updated: 2024/07/08 15:28:38 by amanilac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ void	size_blocks(t_long	*game_data)
 void init_textures(t_long *game_data, t_files *blox, t_img *imgs)
 {
 	game_data->window = mlx_init(WIDTH, HEIGHT, "so_long", true);
-	// game_data->blox->imgs->player->instances->z = 1;
 	if (!game_data->window)
 		print_error("Error initializing window");
 	blox->wall = mlx_load_png("./textures/wall.png");
@@ -54,13 +53,22 @@ void init_textures(t_long *game_data, t_files *blox, t_img *imgs)
 
 void	init_imgs(t_long *game_data, t_files *blox, t_img *imgs)
 {
+	int	i;
+
+	i = 0;
+	ft_printf("collectibles: %d\n", game_data->collectible);
+	imgs->collectible = ft_calloc(game_data->collectible, sizeof (mlx_image_t *));
 	size_blocks(game_data);
 	imgs->wall = mlx_texture_to_image(game_data->window, blox->wall);
 	mlx_resize_image(imgs->wall, game_data->block_size, game_data->block_size);
 	imgs->floor = mlx_texture_to_image(game_data->window, blox->floor);
 	mlx_resize_image(imgs->floor, game_data->block_size, game_data->block_size);
-	imgs->collectible = mlx_texture_to_image(game_data->window, blox->collectible);
-	mlx_resize_image(imgs->collectible, game_data->block_size, game_data->block_size);
+	while (i < game_data->collectible)
+	{
+		imgs->collectible[i] = mlx_texture_to_image(game_data->window, blox->collectible);
+		mlx_resize_image(imgs->collectible[i], game_data->block_size, game_data->block_size);
+		i++;
+	}
 	imgs->exit = mlx_texture_to_image(game_data->window, blox->exit);
 	mlx_resize_image(imgs->exit, game_data->block_size, game_data->block_size);
 	imgs->player = mlx_texture_to_image(game_data->window, blox->player);

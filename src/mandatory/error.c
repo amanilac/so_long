@@ -6,7 +6,7 @@
 /*   By: amanilac <amanilac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 18:29:21 by amanilac          #+#    #+#             */
-/*   Updated: 2024/07/04 17:58:12 by amanilac         ###   ########.fr       */
+/*   Updated: 2024/07/05 15:57:18 by amanilac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@ void	print_error(char *str)
 	exit(EXIT_FAILURE);
 }
 
-void	abandon(char **strings)
+void	abandon(void **ptr)
 {
 	size_t i;
 
 	i = 0;
-	while (strings[i])
-		free(strings[i++]);
-	free(strings);
+	while (ptr[i])
+		free(ptr[i++]);
+	free(ptr);
 }

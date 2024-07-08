@@ -6,7 +6,7 @@
 /*   By: amanilac <amanilac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 21:24:52 by amanilac          #+#    #+#             */
-/*   Updated: 2024/07/04 15:15:14 by amanilac         ###   ########.fr       */
+/*   Updated: 2024/07/08 15:48:47 by amanilac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ void	map_checker(t_long *game_data)
 	}
 	if (collectible < 1 || start != 1 || exit != 1)
 		print_error("a valid map must contain 1 exit, 1 starting position and at least 1 collectible 🤓\n");
+	game_data->collectible_origin = collectible;
 	game_data->collectible = collectible;
 }
 
