@@ -6,7 +6,7 @@
 /*   By: amanilac <amanilac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 21:24:52 by amanilac          #+#    #+#             */
-/*   Updated: 2024/07/08 15:48:47 by amanilac         ###   ########.fr       */
+/*   Updated: 2024/07/09 12:18:35 by amanilac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,44 +28,71 @@ void	is_rectangle(t_long *game_data)
 	}
 }
 
-void	map_checker(t_long *game_data)
+void	map_checker(char *map)
 {
-	int collectible;
-	int start;
-	int exit;
-	int y;
-	int x;
+	int			i;
+	static int	collectible = 0;
+	static int	exit = 0;
+	static int	start = 0;
 
-	collectible = 0;
-	start = 0;
-	exit = 0;
-	y = 0;
-	while (game_data->map[y])
+	i = 0;
+	while(map[i])
 	{
-		x = 0;
-		while (game_data->map[y][x])
-		{
-			if (game_data->map[y][x] == 'C')
-				collectible++;
-			else if (game_data->map[y][x] == 'E')
-				exit++;
-			else if (game_data->map[y][x] == 'P')
-			{
-				start++;
-				game_data->player_x = x;
-				game_data->player_y = y;
-			}
-			else if (game_data->map[y][x] != '0' && game_data->map[y][x] != '1')
-				print_error("whoopsie, that's not a valid map!\n");
-			x++;
-		}
-		y++;
+		if (map[i] == 'C')
+			collectible++;
+		else if (map[i] == 'E')
+			exit++;
+		else if (map[i] == 'P')
+			start++;
+		else if (map[i] == '\n' && map[i + 1] == '\n')
+			print_error("whoopsie, that's not a valid map!\n");
+		else if (map[i] != '1' && map[i] != '0')
+			print_error("whoopsie, that's not a valid map!\n");
+		i++;
 	}
+
 	if (collectible < 1 || start != 1 || exit != 1)
 		print_error("a valid map must contain 1 exit, 1 starting position and at least 1 collectible 🤓\n");
-	game_data->collectible_origin = collectible;
-	game_data->collectible = collectible;
 }
+
+// void	map_checker(t_long *game_data)
+// {
+// 	int collectible;
+// 	int start;
+// 	int exit;
+// 	int y;
+// 	int x;
+
+// 	collectible = 0;
+// 	start = 0;
+// 	exit = 0;
+// 	y = 0;
+// 	while (game_data->map[y])
+// 	{
+// 		x = 0;
+// 		while (game_data->map[y][x])
+// 		{
+// 			if (game_data->map[y][x] == 'C')
+// 				collectible++;
+// 			else if (game_data->map[y][x] == 'E')
+// 				exit++;
+// 			else if (game_data->map[y][x] == 'P')
+// 			{
+// 				start++;
+// 				game_data->player_x = x;
+// 				game_data->player_y = y;
+// 			}
+// 			else if (game_data->map[y][x] != '0' && game_data->map[y][x] != '1')
+// 				print_error("whoopsie, that's not a valid map!\n");
+// 			x++;
+// 		}
+// 		y++;
+// 	}
+// 	if (collectible < 1 || start != 1 || exit != 1)
+// 		print_error("a valid map must contain 1 exit, 1 starting position and at least 1 collectible 🤓\n");
+// 	game_data->collectible_origin = collectible;
+// 	game_data->collectible = collectible;
+// }
 
 char	*boner_grower(char *s1, char *s2)
 {

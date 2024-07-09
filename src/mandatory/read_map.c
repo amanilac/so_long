@@ -6,7 +6,7 @@
 /*   By: amanilac <amanilac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 18:16:24 by amanilac          #+#    #+#             */
-/*   Updated: 2024/07/08 17:02:43 by amanilac         ###   ########.fr       */
+/*   Updated: 2024/07/09 11:56:50 by amanilac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ void	init_imgs(t_long *game_data, t_files *blox, t_img *imgs)
 	mlx_resize_image(imgs->exit, game_data->block_size, game_data->block_size);
 	imgs->player = mlx_texture_to_image(game_data->window, blox->player);
 	mlx_resize_image(imgs->player, game_data->block_size, game_data->block_size);
+	destroy_texture(blox);
 }
 
 void	put_stuff(t_long *game_data)

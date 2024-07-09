@@ -6,7 +6,7 @@
 /*   By: amanilac <amanilac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 18:31:29 by amanilac          #+#    #+#             */
-/*   Updated: 2024/07/08 15:48:00 by amanilac         ###   ########.fr       */
+/*   Updated: 2024/07/09 12:17:14 by amanilac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,8 @@ typedef	struct	s_long
 	int		x_pos;
 	int		y_pos;
 	int		collectible;
+	int		exit;
+	int		start;
 	int		collectible_origin;
 	int		width;
 	int		height;
@@ -60,9 +62,10 @@ typedef	struct	s_long
 }	t_long;	
 
 void	print_error(char *str);
-void	abandon(void **ptr);
+void	abandon(char **ptr);
+void	destroy_texture(t_files *blox);
 
-void	map_checker(t_long *game_data);
+void	map_checker(char *map);
 void	is_rectangle(t_long *game_data);
 char	*boner_grower(char *s1, char *s2);
 

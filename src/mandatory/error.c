@@ -6,7 +6,7 @@
 /*   By: amanilac <amanilac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 18:29:21 by amanilac          #+#    #+#             */
-/*   Updated: 2024/07/05 15:57:18 by amanilac         ###   ########.fr       */
+/*   Updated: 2024/07/09 11:45:02 by amanilac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	print_error(char *str)
 	exit(EXIT_FAILURE);
 }
 
-void	abandon(void **ptr)
+void	abandon(char **ptr)
 {
 	size_t i;
 
@@ -26,4 +26,13 @@ void	abandon(void **ptr)
 	while (ptr[i])
 		free(ptr[i++]);
 	free(ptr);
+}
+
+void	destroy_texture(t_files *blox)
+{
+	mlx_delete_texture(blox->collectible);
+	mlx_delete_texture(blox->wall);
+	mlx_delete_texture(blox->floor);
+	mlx_delete_texture(blox->player);
+	mlx_delete_texture(blox->exit);
 }

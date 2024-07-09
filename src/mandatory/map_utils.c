@@ -6,7 +6,7 @@
 /*   By: amanilac <amanilac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 11:59:52 by annamanilac       #+#    #+#             */
-/*   Updated: 2024/07/08 16:58:29 by amanilac         ###   ########.fr       */
+/*   Updated: 2024/07/09 12:02:23 by amanilac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,13 +77,12 @@ void place_collectible(t_long *game_data)
 		game_data->x_pos = 0;
 		while (game_data->map[y][x])
 		{
-			if (game_data->map[y][x] == 'C')
+			if (game_data->map[y][x++] == 'C')
 			{
 				if (mlx_image_to_window(game_data->window, game_data->blox->imgs->collectible[i], game_data->x_pos, game_data->y_pos) < 0)
 					print_error("Trouble generating blocks🫥");
 				i++;
 			}
-			x++;
 			game_data->x_pos += game_data->block_size;
 		}
 		y++;
