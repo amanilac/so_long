@@ -13,16 +13,17 @@ MLX_DIR = $(DEP_DIR)/MLX42
 MLX = $(LIB_DIR)/libmlx42.a
 
 SRC_NAMES =	main.c				\
-			read_map.c			\
+			generate_map.c		\
 			error.c				\
 			map_utils.c			\
 			parsing.c			\
 			movement.c			\
+			move_utils.c		\
 
 CC = cc
 CC_EXT_SRCS = -L$(LIB_DIR) $(LIBFT) -lft -lmlx42 -lm -lglfw
-FLAGS = -I$(INC_DIR) -Wall -Wextra -Werror -g
-DEBUG_FLAGS = -I$(INC_DIR) -g -fsanitize=address #,undefined,integer
+FLAGS = -I$(INC_DIR) -Wall -Wextra -Werror -g -fsanitize=address
+DEBUG_FLAGS = -I$(INC_DIR) -g -fsanitize=address
 
 ################################################################################
 

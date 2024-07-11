@@ -6,7 +6,7 @@
 /*   By: amanilac <amanilac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 18:31:29 by amanilac          #+#    #+#             */
-/*   Updated: 2024/07/09 12:17:14 by amanilac         ###   ########.fr       */
+/*   Updated: 2024/07/10 14:51:24 by amanilac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,33 +59,60 @@ typedef	struct	s_long
 	int		moves;
 	int		block_size;
 	t_files	*blox;
-}	t_long;	
+}	t_long;
+
+// ###################################### main ######################################
+
+void	check_height(char *map, t_long *game_data);
+void	parse_map(char *file, t_long *game_data);
+
+// ###################################### error ######################################
 
 void	print_error(char *str);
 void	abandon(char **ptr);
 void	destroy_texture(t_files *blox);
 
-void	map_checker(char *map);
+// ###################################### parsing ######################################
+
+void	map_checker(t_long *game_data);
 void	is_rectangle(t_long *game_data);
 char	*boner_grower(char *s1, char *s2);
+void 	count_collectible(t_long *game_data);
+void 	count_start(t_long *game_data);
+void	count_exit(t_long *game_data);
 
-void	generate_map(char **map);
+// ###################################### generate_map ######################################
+
 void	open_window(t_long *game_data);
-
-void 	key_hooker(mlx_key_data_t keydata, void *param);
-void	move_up(t_long *game_data);
-void	move_down(t_long *game_data);
-void	move_left(t_long *game_data);
-void	move_right(t_long *game_data);
-
 void	init_textures(t_long *game_data, t_files *blox, t_img *imgs);
 void	init_imgs(t_long *game_data, t_files *blox, t_img *imgs);
+void	put_stuff(t_long *game_data);
+void	size_blocks(t_long *game_data);
+
+// ###################################### map_utils ######################################
 
 void	place_wall(t_long *game_utils);
 void	place_floor(t_long *game_utils);
 void	place_collectible(t_long *game_utils);
 void	place_exit(t_long *game_utils);
 void	place_player(t_long *game_utils);
+
+// ###################################### movement ######################################
+
+void	key_hooker(mlx_key_data_t keydata, void *param);
+void	move_up(t_long *game_data);
+void	move_down(t_long *game_data);
+void	move_left(t_long *game_data);
+void	move_right(t_long *game_data);
+
+// ###################################### move utils ######################################
+
+void	shift_up(t_long *game_data);
+void	shift_down(t_long *game_data);
+void	shift_left(t_long *game_data);
+void	shift_right(t_long *game_data);
+void	hide_collectible(t_long *game_data);
+
 
 void print_array(char **map);
 
