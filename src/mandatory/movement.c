@@ -6,7 +6,7 @@
 /*   By: amanilac <amanilac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 15:31:50 by annamanilac       #+#    #+#             */
-/*   Updated: 2024/07/10 13:35:09 by amanilac         ###   ########.fr       */
+/*   Updated: 2024/07/16 13:27:08 by amanilac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ void move_up(t_long *game_data)
 			game_data->map[y - 1][x] = 'P';
 			game_data->moves += 1;
 			shift_up(game_data);
+			// game_data->blox->imgs->player->instances->y -= game_data->block_size;
 			ft_printf("%d\n", game_data->moves);
 		}
 	}
@@ -80,6 +81,7 @@ void move_down(t_long *game_data)
 			game_data->map[y + 1][x] = 'P';
 			game_data->moves += 1;
 			shift_down(game_data);
+			// game_data->blox->imgs->player->instances->y += game_data->block_size;
 			ft_printf("%d\n", game_data->moves);
 		}
 	}
@@ -106,6 +108,7 @@ void move_left(t_long *game_data)
 			game_data->map[y][x - 1] = 'P';
 			game_data->moves += 1;
 			shift_left(game_data);
+			// game_data->blox->imgs->player->instances->x -= game_data->block_size;
 			ft_printf("%d\n", game_data->moves);
 		}
 	}
@@ -132,6 +135,7 @@ void move_right(t_long *game_data)
 			game_data->map[y][x + 1] = 'P';
 			game_data->moves += 1;
 			shift_right(game_data);
+			// game_data->blox->imgs->player->instances->x += game_data->block_size;
 			ft_printf("%d\n", game_data->moves);
 		}
 	}
