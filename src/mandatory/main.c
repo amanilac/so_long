@@ -6,7 +6,7 @@
 /*   By: amanilac <amanilac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 18:16:19 by amanilac          #+#    #+#             */
-/*   Updated: 2024/07/11 15:31:33 by amanilac         ###   ########.fr       */
+/*   Updated: 2024/07/17 16:46:23 by amanilac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@ void	parse_map(char *file, t_long *game_data)
 	}
 	check_height(boner, game_data);
 	game_data->map = ft_split(boner, '\n');
-	print_array(game_data->map);
 	map_checker(game_data);
 	is_rectangle(game_data);
 }

@@ -6,7 +6,7 @@
 /*   By: amanilac <amanilac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 21:24:52 by amanilac          #+#    #+#             */
-/*   Updated: 2024/07/10 14:54:17 by amanilac         ###   ########.fr       */
+/*   Updated: 2024/07/17 17:44:13 by amanilac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,16 +28,20 @@ void	is_rectangle(t_long *game_data)
 			print_error("uh-oh! that's not a rectangle!\n");
 		y++;
 	}
-	// while (game_data->map[0][x])
-	// {
-	// 	if (game_data->map[0][x] != '1')
-	// 		print_error("a valid map must be closed by walls:3c");
-	// }
-	// while (game_data->map[game_data->height][x])
-	// {
-	// 	if (game_data->map[game_data->height][x] != '1')
-	// 		print_error("a valid map must be closed by walls:3c");
-	// }
+	while (game_data->map[0][x])
+	{
+		if (game_data->map[0][x] != '1')
+			print_error("a valid map must be closed off by walls!");
+		x++;
+	}
+	x = 0;
+	y -= 1;
+	while (game_data->map[y][x])
+	{
+		if (game_data->map[y][x] != '1')
+			print_error("a valid map must be closed off by walls!");
+		x++;
+	}
 }
 
 void	map_checker(t_long *game_data)
@@ -77,6 +81,9 @@ void count_collectible(t_long *game_data)
 		{
 			if (game_data->map[y][x] == 'C')
 				collectible++;
+			// if ((game_data->map[y - 1][x] == '1' || game_data->map[y - 1][x] == 'E') && (game_data->map[y + 1][x] == '1' || game_data->map[y + 1][x] == 'E') 
+			// 	&& (game_data->map[y][x + 1] == '1' || game_data->map[y][x + 1] == 'E') && (game_data->map[y][x - 1] == '1' || game_data->map[y][x - 1] == 'E'))
+			// 	print_error("invalid path bro!");
 			x++;
 		}
 		y++;
@@ -102,6 +109,8 @@ void count_exit(t_long *game_data)
 		{
 			if (game_data->map[y][x] == 'E')
 				exit++;
+			// if (game_data->map[y - 1][x] == '1' && game_data->map[y + 1][x] == '1' && game_data->map[y][x + 1] == '1'  && game_data->map[y][x - 1] == '1')
+			// 	print_error("invalid path bro!");
 			x++;
 		}
 		y++;

@@ -6,7 +6,7 @@
 /*   By: amanilac <amanilac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 11:59:52 by annamanilac       #+#    #+#             */
-/*   Updated: 2024/07/09 12:02:23 by amanilac         ###   ########.fr       */
+/*   Updated: 2024/07/17 15:55:59 by amanilac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,6 +135,8 @@ void place_player(t_long *game_data)
 			{
 				if (mlx_image_to_window(game_data->window, game_data->blox->imgs->player, game_data->x_pos, game_data->y_pos) < 0)
 					print_error("Trouble generating blocks🫥");
+				game_data->player_x = x;
+				game_data->player_y = y;
 			}
 			x++;
 			game_data->x_pos += game_data->block_size;
