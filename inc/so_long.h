@@ -6,7 +6,7 @@
 /*   By: amanilac <amanilac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 18:31:29 by amanilac          #+#    #+#             */
-/*   Updated: 2024/07/10 14:51:24 by amanilac         ###   ########.fr       */
+/*   Updated: 2024/07/17 18:53:21 by amanilac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,8 @@ void	shift_left(t_long *game_data);
 void	shift_right(t_long *game_data);
 void	hide_collectible(t_long *game_data);
 
+void	check_path(t_long *game_data);
 
-void print_array(char **map);
+void	print_array(char **map);
 
 #endif

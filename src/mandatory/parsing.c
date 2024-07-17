@@ -6,7 +6,7 @@
 /*   By: amanilac <amanilac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 21:24:52 by amanilac          #+#    #+#             */
-/*   Updated: 2024/07/17 17:44:13 by amanilac         ###   ########.fr       */
+/*   Updated: 2024/07/17 18:53:21 by amanilac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ void	is_rectangle(t_long *game_data)
 
 void	map_checker(t_long *game_data)
 {
-	int y;
-	int x;
+	int		y;
+	int		x;
 
 	count_collectible(game_data);
 	count_exit(game_data);
