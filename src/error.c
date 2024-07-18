@@ -6,7 +6,7 @@
 /*   By: amanilac <amanilac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 18:29:21 by amanilac          #+#    #+#             */
-/*   Updated: 2024/07/17 16:46:09 by amanilac         ###   ########.fr       */
+/*   Updated: 2024/07/18 19:58:33 by amanilac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,20 @@ void	print_error(char *str)
 
 void	abandon(char **ptr)
 {
-	size_t i;
+	size_t	i;
 
 	i = 0;
 	while (ptr[i])
 		free(ptr[i++]);
 	free(ptr);
+}
+
+void	free_success(t_long *data, bool status)
+{
+	if (status == true)
+		ft_printf("you won me thinks🍆💦\n");
+	free(data->blox->imgs->collectible);
+	exit (EXIT_SUCCESS);
 }
 
 void	destroy_texture(t_files *blox)

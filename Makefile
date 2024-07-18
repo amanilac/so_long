@@ -1,7 +1,7 @@
 NAME = so_long
 DEBUG_NAME = debug.out
 
-SRC_DIR = src/mandatory
+SRC_DIR = src
 OBJ_DIR = obj
 INC_DIR = inc/
 DEP_DIR = deps/
@@ -28,7 +28,7 @@ DEBUG_FLAGS = -I$(INC_DIR) -g -fsanitize=address
 
 ################################################################################
 
-OBJS = $(SRC_NAMES:%.c=$(OBJ_DIR)/mandatory/%.o)
+OBJS = $(SRC_NAMES:%.c=$(OBJ_DIR)/src/%.o)
 OBJS_DEBUG = $(SRC_NAMES:%.c=$(OBJ_DIR)/debug/%.o)
 
 .PHONY: all debug \
@@ -43,7 +43,7 @@ $(OBJ_DIR)/debug/%.o: $(SRC_DIR)/%.c
 	@echo "$(GREY)$(NAME) $(DEFAULT)| $(GREEN)$< $(PURPLE)$(DEBUG_FLAGS) $(RED)> $(GREY)$@$(DEFAULT)"
 	@$(CC) $(DEBUG_FLAGS) -c $< -o $@
 
-$(OBJ_DIR)/mandatory/%.o: $(SRC_DIR)/%.c
+$(OBJ_DIR)/src/%.o: $(SRC_DIR)/%.c
 	@mkdir -p $(dir $@)
 	@echo "$(GREY)$(NAME) $(DEFAULT)| $(GREEN)$< $(PURPLE)$(FLAGS) $(RED)> $(GREY)$@$(DEFAULT)"
 	@$(CC) $(FLAGS) -c $< -o $@
@@ -68,13 +68,13 @@ $(MLX): $(MLX_DIR)
 
 $(NAME): $(LIBFT) $(MLX) $(OBJS)
 	@$(CC) $(FLAGS) $(OBJS) $(CC_EXT_SRCS) -o $(NAME)
-	@echo "$(GREY)$(NAME) $(DEFAULT)| $(GREEN)Mandatory done$(DEFAULT)"
+	@echo "$(GREY)$(NAME) $(DEFAULT)| $(GREEN)src done$(DEFAULT)"
 
 ################################################################################
 
 $(DEBUG_NAME): $(LIBFT) $(MLX) $(OBJS_DEBUG)
 	@$(CC) $(DEBUG_FLAGS) $(CC_EXT_SRCS) $(OBJS_DEBUG) -o $(DEBUG_NAME)
-	@echo "$(GREY)$(NAME) $(DEBUG_NAME) $(DEFAULT)| $(GREEN)Mandatory done$(DEFAULT)"
+	@echo "$(GREY)$(NAME) $(DEBUG_NAME) $(DEFAULT)| $(GREEN)src done$(DEFAULT)"
 
 debug: $(DEBUG_NAME)
 
