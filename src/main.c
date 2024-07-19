@@ -6,7 +6,7 @@
 /*   By: amanilac <amanilac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 18:16:19 by amanilac          #+#    #+#             */
-/*   Updated: 2024/07/18 20:02:50 by amanilac         ###   ########.fr       */
+/*   Updated: 2024/07/19 14:34:34 by amanilac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,11 @@ void	parse_map(char *file, t_long *data)
 	char	*line;
 
 	fd = open(file, O_RDONLY);
+	if (fd == -1)
+		print_error("can't access file\n");
 	line = get_next_line(fd);
+	if (!line)
+		print_error("empty file what the sigma\n");
 	data->height = 0;
 	full_string = ft_strdup("");
 	while (line)

@@ -6,7 +6,7 @@
 /*   By: amanilac <amanilac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 18:29:21 by amanilac          #+#    #+#             */
-/*   Updated: 2024/07/18 19:58:33 by amanilac         ###   ########.fr       */
+/*   Updated: 2024/07/19 14:46:00 by amanilac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	abandon(char **ptr)
 void	free_success(t_long *data, bool status)
 {
 	if (status == true)
-		ft_printf("you won me thinks🍆💦\n");
+		ft_printf("YIPPEE!!\n");
 	free(data->blox->imgs->collectible);
 	exit (EXIT_SUCCESS);
 }

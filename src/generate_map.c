@@ -6,7 +6,7 @@
 /*   By: amanilac <amanilac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 18:16:24 by amanilac          #+#    #+#             */
-/*   Updated: 2024/07/18 19:34:01 by amanilac         ###   ########.fr       */
+/*   Updated: 2024/07/19 14:44:54 by amanilac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,12 @@
 
 void	size_blocks(t_long	*data)
 {
-	int	block;
 	int	new_size;
 
-	if (data->width > data->height)
-		block = data->width;
-	else
-		block = data->height;
 	if (WIDTH > HEIGHT)
-		new_size = WIDTH / block;
+		new_size = WIDTH / data->width;
 	else
-		new_size = HEIGHT / block;
+		new_size = HEIGHT / data->height;
 	data->block_size = new_size;
 }
 
