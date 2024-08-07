@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amanilac <amanilac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: annamanilaci <annamanilaci@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 18:31:29 by amanilac          #+#    #+#             */
-/*   Updated: 2024/07/19 14:40:11 by amanilac         ###   ########.fr       */
+/*   Updated: 2024/08/07 20:36:11 by annamanilac      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# define WIDTH 1024
-# define HEIGHT 1024
+# define WIDTH 500
+# define HEIGHT 500
 
 # include "libft.h"
 # include "MLX42.h"
@@ -23,6 +23,15 @@
 # include <stdbool.h>
 # include <stdio.h>
 # include <fcntl.h>
+
+typedef	struct s_temp
+{
+	char	**map;
+	int		x;
+	int		y;
+	int		width;
+	int		height;
+} t_temp;
 
 typedef struct s_img
 {
@@ -107,7 +116,7 @@ void	move_down(t_long *data);
 void	move_left(t_long *data);
 void	move_right(t_long *data);
 
-// ############################### move utils ###############################
+// ############################### move_utils ###############################
 
 void	shift_up(t_long *data);
 void	shift_down(t_long *data);
@@ -115,11 +124,18 @@ void	shift_left(t_long *data);
 void	shift_right(t_long *data);
 void	hide_collectible(t_long *data);
 
-// ############################### more parsing #############################
+// ############################### more_parsing #############################
 
 void	check_path(t_long *data);
 int		check_grid(int y, int x, t_long *data);
 void	check_walls(t_long *data);
 void	reset_pos(t_long *data);
+
+// ############################### path_utils ###############################
+
+void	create_temp(t_long *data);
+char 	**duplicate_map(t_long *data);
+void	flood(t_temp temp, int y, int x);
+void	path_is_valid(t_temp temp);
 
 #endif

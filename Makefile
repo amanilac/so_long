@@ -20,6 +20,7 @@ SRC_NAMES =	main.c				\
 			movement.c			\
 			move_utils.c		\
 			more_parsing.c		\
+			path_utils.c		\
 
 CC = cc
 CC_EXT_SRCS = -L$(LIB_DIR) $(LIBFT) -lft -lmlx42 -lm -lglfw

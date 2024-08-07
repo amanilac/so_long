@@ -16,10 +16,8 @@ void	is_rectangle(t_long *data)
 {
 	int	width;
 	int	y;
-	int	x;
 
 	y = 0;
-	x = 0;
 	width = (int)ft_strlen(data->map[y]);
 	data->width = width;
 	while (data->map[y])
