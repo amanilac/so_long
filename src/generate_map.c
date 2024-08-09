@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   generate_map.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amanilac <amanilac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: annamanilaci <annamanilaci@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 18:16:24 by amanilac          #+#    #+#             */
-/*   Updated: 2024/07/19 14:44:54 by amanilac         ###   ########.fr       */
+/*   Updated: 2024/08/09 19:20:53 by annamanilac      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,19 @@ void	size_blocks(t_long	*data)
 {
 	int	new_size;
 
-	if (WIDTH > HEIGHT)
+	if (data->width > data->height)
 		new_size = WIDTH / data->width;
 	else
 		new_size = HEIGHT / data->height;
 	data->block_size = new_size;
+	printf("%d\n", data->block_size);
 }
 
 void	init_textures(t_long *data, t_files *blox, t_img *imgs)
 {
-	data->window = mlx_init(WIDTH, HEIGHT, "so_long", true);
+	size_blocks(data);
+	data->window = mlx_init(data->width * data->block_size,
+		data->height * data->block_size, "so_long", true);
 	if (!data->window)
 		print_error("Error initializing window");
 	blox->wall = mlx_load_png("./textures/wall.png");
@@ -53,7 +56,6 @@ void	init_imgs(t_long *data, t_files *blox, t_img *imgs)
 	i = 0;
 	imgs->collectible
 		= ft_calloc(data->collectible, sizeof (mlx_image_t *));
-	size_blocks(data);
 	imgs->wall = mlx_texture_to_image(data->window, blox->wall);
 	mlx_resize_image(imgs->wall, data->block_size, data->block_size);
 	imgs->floor = mlx_texture_to_image(data->window, blox->floor);

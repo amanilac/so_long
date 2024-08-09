@@ -6,7 +6,7 @@
 /*   By: annamanilaci <annamanilaci@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 18:39:55 by amanilac          #+#    #+#             */
-/*   Updated: 2024/08/07 20:31:51 by annamanilac      ###   ########.fr       */
+/*   Updated: 2024/08/09 19:04:26 by annamanilac      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	check_walls(t_long *data)
 	while (data->map[0][x])
 	{
 		if (data->map[0][x] != '1')
-			print_error("a valid map must be closed off by walls!\n");
+			print_error("Error: valid map must be closed off by walls!\n");
 		x++;
 	}
 	x = 0;
@@ -44,7 +44,7 @@ void	check_walls(t_long *data)
 	while (data->map[y][x])
 	{
 		if (data->map[y][x] != '1')
-			print_error("a valid map must be closed off by walls!\n");
+			print_error("Error: valid map must be closed off by walls!\n");
 		x++;
 	}
 }

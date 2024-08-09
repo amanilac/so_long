@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amanilac <amanilac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: annamanilaci <annamanilaci@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 21:24:52 by amanilac          #+#    #+#             */
-/*   Updated: 2024/07/18 19:34:01 by amanilac         ###   ########.fr       */
+/*   Updated: 2024/08/09 18:55:43 by annamanilac      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,13 +115,15 @@ void	count_start(t_long *data)
 		while (data->map[y][x])
 		{
 			if (data->map[y][x] == 'P')
+			{
+				data->player_x = x;
+				data->player_y = y;
 				start++;
+			}
 			x++;
 		}
 		y++;
 	}
 	if (start != 1)
 		print_error("a map must contain 1 exit, 1 start & collectibles 🤓\n");
-	data->player_x = x;
-	data->player_y = y;
 }
