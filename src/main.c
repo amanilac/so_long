@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: annamanilaci <annamanilaci@student.42.f    +#+  +:+       +#+        */
+/*   By: amanilac <amanilac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 18:16:19 by amanilac          #+#    #+#             */
-/*   Updated: 2024/08/09 19:07:44 by annamanilac      ###   ########.fr       */
+/*   Updated: 2024/08/15 15:56:38 by amanilac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	check_height(char *map, t_long *data)
 	while (map[i])
 	{
 		if ((map[i] == '\n' && (map[i + 1] != '1' || map[i - 1] != '1')))
-			print_error("Error: valid map must be closed by walls!\n");
+			print_error("valid map must be closed by walls!\n");
 		if (map[i] == '\n')
 			data->height += 1;
 		i++;
@@ -36,10 +36,10 @@ void	parse_map(char *file, t_long *data)
 
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
-		print_error("Error: can't access file\n");
+		print_error("can't access file\n");
 	line = get_next_line(fd);
 	if (!line)
-		print_error("Error: empty file what the sigma\n");
+		print_error("empty file what the sigma\n");
 	data->height = 0;
 	full_string = ft_strdup("");
 	while (line)
