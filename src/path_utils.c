@@ -6,7 +6,7 @@
 /*   By: annamanilaci <annamanilaci@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 18:57:36 by annamanilac       #+#    #+#             */
-/*   Updated: 2024/08/09 19:21:58 by annamanilac      ###   ########.fr       */
+/*   Updated: 2024/08/11 15:48:45 by annamanilac      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ void	path_is_valid(t_temp temp)
 			if (temp.map[y][x] == 'E' || temp.map[y][x] == 'C')
 			{
 				abandon(temp.map);
-				print_error("Error: no valid path:(\n");
+				print_error("Error: no valid path🙁\n");
 			}
 			else
 				x++;
