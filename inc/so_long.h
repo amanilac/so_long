@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: annamanilaci <annamanilaci@student.42.f    +#+  +:+       +#+        */
+/*   By: amanilac <amanilac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 18:31:29 by amanilac          #+#    #+#             */
-/*   Updated: 2024/08/09 19:21:16 by annamanilac      ###   ########.fr       */
+/*   Updated: 2024/08/15 16:27:16 by amanilac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# define WIDTH 1024
-# define HEIGHT 1024
+# define WIDTH 2048
+# define HEIGHT 2048
 
 # include "libft.h"
 # include "MLX42.h"
@@ -24,14 +24,14 @@
 # include <stdio.h>
 # include <fcntl.h>
 
-typedef	struct s_temp
+typedef struct s_temp
 {
 	char	**map;
 	int		x;
 	int		y;
 	int		width;
 	int		height;
-} t_temp;
+}	t_temp;
 
 typedef struct s_img
 {
@@ -134,7 +134,7 @@ void	reset_pos(t_long *data);
 // ############################### path_utils ###############################
 
 void	create_temp(t_long *data);
-char 	**duplicate_map(t_long *data);
+char	**duplicate_map(t_long *data);
 void	flood(t_temp temp, int y, int x);
 void	path_is_valid(t_temp temp);
 

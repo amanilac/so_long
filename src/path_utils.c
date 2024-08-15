@@ -3,25 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   path_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: annamanilaci <annamanilaci@student.42.f    +#+  +:+       +#+        */
+/*   By: amanilac <amanilac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 18:57:36 by annamanilac       #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2024/08/11 15:48:45 by annamanilac      ###   ########.fr       */
+=======
+/*   Updated: 2024/08/15 16:22:55 by amanilac         ###   ########.fr       */
+>>>>>>> 1dd832e0f53541fe6d43c09f0bb3580769c827c3
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
-
-void print_array(char **map)
-{
-	int	y=0;
-
-	while(map[y])
-	{
-		printf("%s\n", map[y]);
-		y++;
-	}
-}
 
 void	create_temp(t_long *data)
 {
@@ -62,7 +55,7 @@ void	flood(t_temp temp, int y, int x)
 	if (temp.map[y][x] == '1' || y >= temp.height || x >= temp.width
 			|| y <= 0 || x <= 0)
 		return ;
-	if (temp.map[y][x] == '0' || temp.map[y][x] == 'C' 
+	if (temp.map[y][x] == '0' || temp.map[y][x] == 'C'
 		|| temp.map[y][x] == 'E' || temp.map[y][x] == 'P')
 	{
 		temp.map[y][x] = 'X';
@@ -87,7 +80,11 @@ void	path_is_valid(t_temp temp)
 			if (temp.map[y][x] == 'E' || temp.map[y][x] == 'C')
 			{
 				abandon(temp.map);
+<<<<<<< HEAD
 				print_error("Error: no valid path🙁\n");
+=======
+				print_error("no valid path:(\n");
+>>>>>>> 1dd832e0f53541fe6d43c09f0bb3580769c827c3
 			}
 			else
 				x++;

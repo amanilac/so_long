@@ -6,7 +6,7 @@
 /*   By: amanilac <amanilac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 18:29:21 by amanilac          #+#    #+#             */
-/*   Updated: 2024/07/19 14:46:00 by amanilac         ###   ########.fr       */
+/*   Updated: 2024/08/15 15:58:23 by amanilac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	print_error(char *str)
 {
+	ft_putstr_fd("Error\n", 2);
 	ft_putstr_fd(str, 2);
 	exit(EXIT_FAILURE);
 }
