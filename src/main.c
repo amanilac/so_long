@@ -6,7 +6,7 @@
 /*   By: amanilac <amanilac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 18:16:19 by amanilac          #+#    #+#             */
-/*   Updated: 2024/08/18 20:51:48 by amanilac         ###   ########.fr       */
+/*   Updated: 2024/08/18 21:14:40 by amanilac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,6 @@ int	main(int argc, char **argv)
 	parse_map(file, &data);
 	init_textures(&data, &blox, &imgs);
 	open_window(&data);
-	abandon(data.map);
 	free_success(&data, false);
 	return (EXIT_SUCCESS);
 }
