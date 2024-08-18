@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: annamanilaci <annamanilaci@student.42.f    +#+  +:+       +#+        */
+/*   By: amanilac <amanilac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 18:29:21 by amanilac          #+#    #+#             */
-/*   Updated: 2024/08/15 19:35:25 by annamanilac      ###   ########.fr       */
+/*   Updated: 2024/08/18 20:57:56 by amanilac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,8 @@ void	print_error(char *str, t_long *data)
 {
 	ft_putstr_fd("Error\n", 2);
 	ft_putstr_fd(str, 2);
-	if (data)
-	{
-		if (data->map)
-			abandon(data->map);
-	}
+	if (data->map)
+		abandon(data->map);
 	exit(EXIT_FAILURE);
 }
 
@@ -39,6 +36,8 @@ void	free_success(t_long *data, bool status)
 	if (status == true)
 		ft_printf("YIPPEE!!\n");
 	free(data->blox->imgs->collectible);
+	if (data->map)
+		abandon(data->map);
 	exit (EXIT_SUCCESS);
 }
 
