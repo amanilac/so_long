@@ -6,7 +6,7 @@
 /*   By: amanilac <amanilac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 18:16:19 by amanilac          #+#    #+#             */
-/*   Updated: 2024/08/18 21:14:40 by amanilac         ###   ########.fr       */
+/*   Updated: 2024/08/18 21:31:24 by amanilac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,10 +76,10 @@ int	main(int argc, char **argv)
 	t_files			blox;
 	t_img			imgs;
 
+	data.map = NULL;
 	if (argc != 2)
 		print_error("learn to input proper arguments bruv\n", &data);
 	argv++;
-	data.map = NULL;
 	file = *argv;
 	*argv = *argv + (ft_strlen(*argv) - 4);
 	if (ft_strncmp(*argv, ".ber", 4) != 0)
