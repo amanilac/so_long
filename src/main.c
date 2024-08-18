@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: annamanilaci <annamanilaci@student.42.f    +#+  +:+       +#+        */
+/*   By: amanilac <amanilac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 18:16:19 by amanilac          #+#    #+#             */
-/*   Updated: 2024/08/15 19:35:25 by annamanilac      ###   ########.fr       */
+/*   Updated: 2024/08/18 20:46:40 by amanilac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,10 @@ void	check_height(char *map, t_long *data)
 	while (map[i])
 	{
 		if ((map[i] == '\n' && (map[i + 1] != '1' || map[i - 1] != '1')))
+		{
+			free (map);
 			print_error("valid map must be closed by walls!\n", data);
+		}
 		if (map[i] == '\n')
 			data->height += 1;
 		i++;

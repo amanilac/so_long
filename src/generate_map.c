@@ -6,7 +6,7 @@
 /*   By: amanilac <amanilac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 18:16:24 by amanilac          #+#    #+#             */
-/*   Updated: 2024/08/18 20:12:30 by amanilac         ###   ########.fr       */
+/*   Updated: 2024/08/18 20:46:14 by amanilac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,25 @@
 
 void	size_blocks(t_long	*data)
 {
-	int	new_size;
 	int	x_max;
 	int	y_max;
 
 	mlx_get_monitor_size(0, &x_max, &y_max);
-	y_max -= 40;
+	y_max -= 65;
 	if (data->width > x_max || data->height > y_max)
 		print_error("map too large😢\n", data);
-	if (data->width > data->height)
-		new_size = WIDTH / data->width;
-	else
-		new_size = HEIGHT / data->height;
-	data->block_size = new_size;
+	data->block_size = x_max / data->width;
+	if (data->block_size > y_max / data->height)
+		data->block_size = y_max / data->height;
+	while (data->block_size > 1
+		&& (x_max < (data->width * data->block_size)
+			|| y_max < (data->height * data->block_size)))
+		data->block_size--;
 }
 
 void	init_textures(t_long *data, t_files *blox, t_img *imgs)
 {
-	data->window = mlx_init(1, 1, "so_long", true);
+	data->window = mlx_init(1, 1, "so_long", false);
 	if (!data->window)
 		print_error("unable to initialize window", data);
 	size_blocks(data);
