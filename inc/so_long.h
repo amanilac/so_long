@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amanilac <amanilac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: annamanilaci <annamanilaci@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 18:31:29 by amanilac          #+#    #+#             */
-/*   Updated: 2024/08/15 16:27:16 by amanilac         ###   ########.fr       */
+/*   Updated: 2024/08/15 19:35:21 by annamanilac      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void	parse_map(char *file, t_long *data);
 
 // ################################## error #################################
 
-void	print_error(char *str);
+void	print_error(char *str, t_long *data);
 void	abandon(char **ptr);
 void	destroy_texture(t_files *blox);
 void	free_success(t_long *data, bool status);
@@ -136,6 +136,6 @@ void	reset_pos(t_long *data);
 void	create_temp(t_long *data);
 char	**duplicate_map(t_long *data);
 void	flood(t_temp temp, int y, int x);
-void	path_is_valid(t_temp temp);
+int		path_is_valid(t_temp temp);
 
 #endif

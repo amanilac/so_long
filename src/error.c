@@ -3,19 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amanilac <amanilac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: annamanilaci <annamanilaci@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 18:29:21 by amanilac          #+#    #+#             */
-/*   Updated: 2024/08/15 15:58:23 by amanilac         ###   ########.fr       */
+/*   Updated: 2024/08/15 19:35:25 by annamanilac      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 
-void	print_error(char *str)
+void	print_error(char *str, t_long *data)
 {
 	ft_putstr_fd("Error\n", 2);
 	ft_putstr_fd(str, 2);
+	if (data)
+	{
+		if (data->map)
+			abandon(data->map);
+	}
 	exit(EXIT_FAILURE);
 }
 

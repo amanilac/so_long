@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   generate_map.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amanilac <amanilac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: annamanilaci <annamanilaci@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 18:16:24 by amanilac          #+#    #+#             */
-/*   Updated: 2024/08/15 16:09:29 by amanilac         ###   ########.fr       */
+/*   Updated: 2024/08/15 19:30:48 by annamanilac      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,22 +29,22 @@ void	init_textures(t_long *data, t_files *blox, t_img *imgs)
 	data->window = mlx_init(data->width * data->block_size,
 			data->height * data->block_size, "so_long", true);
 	if (!data->window)
-		print_error("unable to initialize window");
+		print_error("unable to initialize window", data);
 	blox->wall = mlx_load_png("./textures/wall.png");
 	if (!blox->wall)
-		print_error("trouble loading textures:(\n");
+		print_error("trouble loading textures:(\n", data);
 	blox->floor = mlx_load_png("./textures/floor.png");
 	if (!blox->floor)
-		print_error("trouble loading textures:(\n");
+		print_error("trouble loading textures:(\n", data);
 	blox->collectible = mlx_load_png("./textures/diamond.png");
 	if (!blox->collectible)
-		print_error("trouble loading textures:(\n");
+		print_error("trouble loading textures:(\n", data);
 	blox->exit = mlx_load_png("./textures/exit.png");
 	if (!blox->exit)
-		print_error("trouble loading textures:(\n");
+		print_error("trouble loading textures:(\n", data);
 	blox->player = mlx_load_png("./textures/player.png");
 	if (!blox->player)
-		print_error("trouble loading textures:(\n");
+		print_error("trouble loading textures:(\n", data);
 	init_imgs(data, blox, imgs);
 }
 

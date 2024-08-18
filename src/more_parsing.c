@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   more_parsing.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amanilac <amanilac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: annamanilaci <annamanilaci@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 18:39:55 by amanilac          #+#    #+#             */
-/*   Updated: 2024/08/15 15:56:38 by amanilac         ###   ########.fr       */
+/*   Updated: 2024/08/15 19:35:25 by annamanilac      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	check_walls(t_long *data)
 	while (data->map[0][x])
 	{
 		if (data->map[0][x] != '1')
-			print_error("valid map must be closed off by walls!\n");
+			print_error("valid map must be closed off by walls!\n", data);
 		x++;
 	}
 	x = 0;
@@ -44,7 +44,7 @@ void	check_walls(t_long *data)
 	while (data->map[y][x])
 	{
 		if (data->map[y][x] != '1')
-			print_error("valid map must be closed off by walls!\n");
+			print_error("valid map must be closed off by walls!\n", data);
 		x++;
 	}
 }

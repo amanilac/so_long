@@ -3,14 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   path_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amanilac <amanilac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: annamanilaci <annamanilaci@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 18:57:36 by annamanilac       #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2024/08/11 15:48:45 by annamanilac      ###   ########.fr       */
-=======
-/*   Updated: 2024/08/15 16:22:55 by amanilac         ###   ########.fr       */
->>>>>>> 1dd832e0f53541fe6d43c09f0bb3580769c827c3
+/*   Updated: 2024/08/15 19:35:25 by annamanilac      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +23,8 @@ void	create_temp(t_long *data)
 	temp.y = data->player_y;
 	temp.map = duplicate_map(data);
 	flood(temp, temp.y, temp.x);
-	path_is_valid(temp);
+	if (path_is_valid(temp))
+		print_error("invalid path:(\n", data);
 	if (temp.map)
 		abandon(temp.map);
 }
@@ -66,7 +63,7 @@ void	flood(t_temp temp, int y, int x)
 	}
 }
 
-void	path_is_valid(t_temp temp)
+int	path_is_valid(t_temp temp)
 {
 	int	y;
 	int	x;
@@ -80,15 +77,12 @@ void	path_is_valid(t_temp temp)
 			if (temp.map[y][x] == 'E' || temp.map[y][x] == 'C')
 			{
 				abandon(temp.map);
-<<<<<<< HEAD
-				print_error("Error: no valid path🙁\n");
-=======
-				print_error("no valid path:(\n");
->>>>>>> 1dd832e0f53541fe6d43c09f0bb3580769c827c3
+				return (1);
 			}
 			else
 				x++;
 		}
 		y++;
 	}
+	return (0);
 }

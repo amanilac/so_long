@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amanilac <amanilac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: annamanilaci <annamanilaci@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 18:16:19 by amanilac          #+#    #+#             */
-/*   Updated: 2024/08/15 15:56:38 by amanilac         ###   ########.fr       */
+/*   Updated: 2024/08/15 19:35:25 by annamanilac      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	check_height(char *map, t_long *data)
 	while (map[i])
 	{
 		if ((map[i] == '\n' && (map[i + 1] != '1' || map[i - 1] != '1')))
-			print_error("valid map must be closed by walls!\n");
+			print_error("valid map must be closed by walls!\n", data);
 		if (map[i] == '\n')
 			data->height += 1;
 		i++;
@@ -36,10 +36,10 @@ void	parse_map(char *file, t_long *data)
 
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
-		print_error("can't access file\n");
+		print_error("can't access file\n", data);
 	line = get_next_line(fd);
 	if (!line)
-		print_error("empty file what the sigma\n");
+		print_error("empty file what the sigma\n", data);
 	data->height = 0;
 	full_string = ft_strdup("");
 	while (line)
@@ -74,12 +74,12 @@ int	main(int argc, char **argv)
 	t_img			imgs;
 
 	if (argc != 2)
-		print_error("learn to input proper arguments bruv\n");
+		print_error("learn to input proper arguments bruv\n", &data);
 	argv++;
 	file = *argv;
 	*argv = *argv + (ft_strlen(*argv) - 4);
 	if (ft_strncmp(*argv, ".ber", 4) != 0)
-		print_error("erm, what the flip!? that's not a .ber file...\n");
+		print_error("erm, what the flip!? that's not a .ber file...\n", &data);
 	data.blox = &blox;
 	blox.imgs = &imgs;
 	parse_map(file, &data);

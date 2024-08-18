@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amanilac <amanilac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: annamanilaci <annamanilaci@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 11:59:52 by annamanilac       #+#    #+#             */
-/*   Updated: 2024/08/15 15:56:38 by amanilac         ###   ########.fr       */
+/*   Updated: 2024/08/15 19:35:25 by annamanilac      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	place_floor(t_long *data)
 			if (mlx_image_to_window(data->window,
 					data->blox->imgs->floor, data->x_pos,
 					data->y_pos) < 0)
-				print_error("trouble generating blocks🫥");
+				print_error("trouble generating blocks🫥\n", data);
 			x++;
 			data->x_pos += data->block_size;
 		}
@@ -54,7 +54,7 @@ void	place_wall(t_long *data)
 				if (mlx_image_to_window(data->window,
 						data->blox->imgs->wall, data->x_pos,
 						data->y_pos) < 0)
-					print_error("trouble generating blocks🫥");
+					print_error("trouble generating blocks🫥\n", data);
 			}
 			x++;
 			data->x_pos += data->block_size;
@@ -83,7 +83,7 @@ void	place_collectible(t_long *data)
 			{
 				if (mlx_image_to_window(data->window, data->blox->imgs
 						->collectible[i], data->x_pos, data->y_pos) < 0)
-					print_error("trouble generating blocks🫥");
+					print_error("trouble generating blocks🫥\n", data);
 				i++;
 			}
 			data->x_pos += data->block_size;
@@ -111,7 +111,7 @@ void	place_exit(t_long *data)
 				if (mlx_image_to_window(data->window,
 						data->blox->imgs->exit, data->x_pos,
 						data->y_pos) < 0)
-					print_error("trouble generating blocks🫥");
+					print_error("trouble generating blocks🫥\n", data);
 			}
 			x++;
 			data->x_pos += data->block_size;
@@ -139,7 +139,7 @@ void	place_player(t_long *data)
 				if (mlx_image_to_window(data->window,
 						data->blox->imgs->player, data->x_pos,
 						data->y_pos) < 0)
-					print_error("trouble generating blocks🫥");
+					print_error("trouble generating blocks🫥\n", data);
 				data->player_x = x;
 				data->player_y = y;
 			}

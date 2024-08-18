@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amanilac <amanilac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: annamanilaci <annamanilaci@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 21:24:52 by amanilac          #+#    #+#             */
-/*   Updated: 2024/08/15 15:56:38 by amanilac         ###   ########.fr       */
+/*   Updated: 2024/08/15 19:35:25 by annamanilac      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	is_rectangle(t_long *data)
 	while (data->map[y])
 	{
 		if ((int)ft_strlen(data->map[y]) != width)
-			print_error("uh-oh! that's not a rectangle!\n");
+			print_error("uh-oh! that's not a rectangle!\n", data);
 		y++;
 	}
 	check_walls(data);
@@ -46,7 +46,7 @@ void	map_checker(t_long *data)
 			if (data->map[y][x] != '0' && data->map[y][x] != '1'
 				&& data->map[y][x] != 'P' && data->map[y][x] != 'E'
 				&& data->map[y][x] != 'C')
-				print_error("whoopsie, that's not a valid map!\n");
+				print_error("whoopsie, that's not a valid map!\n", data);
 			x++;
 		}
 		y++;
@@ -73,7 +73,7 @@ void	count_collectible(t_long *data)
 		y++;
 	}
 	if (collectible < 1)
-		print_error("a map must contain 1 exit, 1 start & collectibles 🤓\n");
+		print_error("a map must contain 1 exit, 1 start & collectibles 🤓\n", data);
 	data->collectible = collectible;
 	data->collectible_origin = collectible;
 }
@@ -98,7 +98,7 @@ void	count_exit(t_long *data)
 		y++;
 	}
 	if (exit != 1)
-		print_error("a map must contain 1 exit, 1 start & collectibles 🤓\n");
+		print_error("a map must contain 1 exit, 1 start & collectibles 🤓\n", data);
 }
 
 void	count_start(t_long *data)
@@ -125,5 +125,5 @@ void	count_start(t_long *data)
 		y++;
 	}
 	if (start != 1)
-		print_error("a map must contain 1 exit, 1 start & collectibles 🤓\n");
+		print_error("a map must contain 1 exit, 1 start & collectibles 🤓\n", data);
 }
